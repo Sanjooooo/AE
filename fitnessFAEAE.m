@@ -8,7 +8,6 @@ seg = diff(path, 1, 1);
 segLen = sqrt(sum(seg.^2, 2)) + 1e-9;
 L = sum(segLen);
 
-% ---------- Energy ----------
 windVec = queryWindField(path(1:end-1, :), map);
 windMag = sqrt(sum(windVec.^2, 2));
 segDir = seg ./ segLen;
@@ -21,21 +20,24 @@ E = sum(params.energy.a1 * segLen + ...
         params.energy.a2 * abs(seg(:, 3)) + ...
         params.energy.a3 * Phi);
 
-% ---------- Wind risk ----------
 risk = queryWindRisk(path, map);
 R = sum(risk(1:end-1) .* segLen);
 
-% ---------- Smoothness ----------
 dd = path(3:end, :) - 2 * path(2:end-1, :) + path(1:end-2, :);
 S = sum(sum(dd.^2, 2));
 
-% ---------- Height-holding term ----------
-H = sum((path(:, 3) - params.heightRef).^2);
+if isfield(params, 'useHeightTerm') && params.useHeightTerm
+    H = sum((path(:, 3) - params.heightRef).^2);
+else
+    H = 0;
+end
 
-% ---------- NEW: Boundary-avoidance term ----------
-B = boundaryPenalty(path, params);
+if isfield(params, 'useBoundaryTerm') && params.useBoundaryTerm
+    B = boundaryPenalty(path, params);
+else
+    B = 0;
+end
 
-% ---------- Constraint violations ----------
 [Cobs, obsIdx] = obstacleViolation(path, map.obstacles);
 [Cnfz, nfzIdx] = nfzViolation(path, map.nfz);
 Ccurv = curvatureViolation(seg, params.turnMax);
@@ -46,7 +48,6 @@ P = params.penalty.obs  * Cobs + ...
     params.penalty.curv * Ccurv + ...
     params.penalty.alt  * Calt;
 
-% ---------- Total objective ----------
 fit = params.weights.L * L + ...
       params.weights.E * E + ...
       params.weights.R * R + ...
@@ -84,14 +85,12 @@ ymax = params.map.ylim(2);
 px = zeros(size(path,1),1);
 py = zeros(size(path,1),1);
 
-% x-direction penalty
 idx1 = path(:,1) < xmin + mx;
 px(idx1) = (xmin + mx - path(idx1,1)).^2;
 
 idx2 = path(:,1) > xmax - mx;
 px(idx2) = (path(idx2,1) - (xmax - mx)).^2;
 
-% y-direction penalty
 idy1 = path(:,2) < ymin + my;
 py(idy1) = (ymin + my - path(idy1,2)).^2;
 

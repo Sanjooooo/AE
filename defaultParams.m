@@ -10,7 +10,7 @@ params.maxIter  = 300;
 params.nCtrl    = 6;              % number of interior control points
 params.dim      = 3 * params.nCtrl;
 params.degree   = 3;              % cubic B-spline
-params.nSamples = 120;            % sampled points on the path
+params.nSamples = 220;            % sampled points on the path
 
 % ---------- Scene ----------
 params.start = [5, 5, 12];
