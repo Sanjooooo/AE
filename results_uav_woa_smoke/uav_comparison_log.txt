@@ -1,0 +1,7 @@
+[2026-03-16 11:02:10] Starting new batch: F:\MATLAB_Project\FAEAE_matlab\results_uav_woa_smoke\uav_comparison_results.mat
+[2026-03-16 11:02:10] Entering block: Scene 1 | WOA
+[2026-03-16 11:02:17] DONE: Scene 1 | WOA | run 1 | best=541.780178 | time=7.371s
+[2026-03-16 11:02:24] DONE: Scene 1 | WOA | run 2 | best=1026.379482 | time=7.188s
+[2026-03-16 11:02:32] DONE: Scene 1 | WOA | run 3 | best=777.488638 | time=7.073s
+[2026-03-16 11:02:32] Block finished: Scene 1 | WOA | done=3 | failed=0
+[2026-03-16 11:02:32] Batch finished | done=3 | failed=0 | pending=0 | elapsed=21.66s

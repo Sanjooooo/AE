@@ -1,0 +1,7 @@
+[2026-03-16 10:57:50] Starting new batch: F:\MATLAB_Project\FAEAE_matlab\results_uav_hho_smoke\uav_comparison_results.mat
+[2026-03-16 10:57:50] Entering block: Scene 1 | HHO
+[2026-03-16 10:58:00] DONE: Scene 1 | HHO | run 1 | best=379.352765 | time=9.420s
+[2026-03-16 10:58:09] DONE: Scene 1 | HHO | run 2 | best=863.945851 | time=8.695s
+[2026-03-16 10:58:17] DONE: Scene 1 | HHO | run 3 | best=375.774393 | time=8.755s
+[2026-03-16 10:58:17] Block finished: Scene 1 | HHO | done=3 | failed=0
+[2026-03-16 10:58:17] Batch finished | done=3 | failed=0 | pending=0 | elapsed=26.91s

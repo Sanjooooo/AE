@@ -1,0 +1,32 @@
+[2026-03-16 11:03:43] Starting new batch: F:\MATLAB_Project\FAEAE_matlab\results_uav_6alg_smoke\uav_comparison_results.mat
+[2026-03-16 11:03:43] Entering block: Scene 1 | AE
+[2026-03-16 11:03:51] DONE: Scene 1 | AE | run 1 | best=1122.125319 | time=8.187s
+[2026-03-16 11:03:59] DONE: Scene 1 | AE | run 2 | best=444.214333 | time=7.757s
+[2026-03-16 11:04:07] DONE: Scene 1 | AE | run 3 | best=501.644040 | time=8.147s
+[2026-03-16 11:04:07] Block finished: Scene 1 | AE | done=3 | failed=0
+[2026-03-16 11:04:07] Entering block: Scene 1 | PSO
+[2026-03-16 11:04:15] DONE: Scene 1 | PSO | run 1 | best=345.570433 | time=7.697s
+[2026-03-16 11:04:22] DONE: Scene 1 | PSO | run 2 | best=467.971958 | time=7.422s
+[2026-03-16 11:04:30] DONE: Scene 1 | PSO | run 3 | best=323.641203 | time=7.367s
+[2026-03-16 11:04:30] Block finished: Scene 1 | PSO | done=3 | failed=0
+[2026-03-16 11:04:30] Entering block: Scene 1 | GWO
+[2026-03-16 11:04:37] DONE: Scene 1 | GWO | run 1 | best=350.182886 | time=7.754s
+[2026-03-16 11:04:45] DONE: Scene 1 | GWO | run 2 | best=313.614660 | time=7.948s
+[2026-03-16 11:04:53] DONE: Scene 1 | GWO | run 3 | best=338.863000 | time=8.099s
+[2026-03-16 11:04:53] Block finished: Scene 1 | GWO | done=3 | failed=0
+[2026-03-16 11:04:53] Entering block: Scene 1 | HHO
+[2026-03-16 11:05:03] DONE: Scene 1 | HHO | run 1 | best=379.352765 | time=9.637s
+[2026-03-16 11:05:13] DONE: Scene 1 | HHO | run 2 | best=863.945851 | time=9.395s
+[2026-03-16 11:05:22] DONE: Scene 1 | HHO | run 3 | best=375.774393 | time=9.550s
+[2026-03-16 11:05:22] Block finished: Scene 1 | HHO | done=3 | failed=0
+[2026-03-16 11:05:22] Entering block: Scene 1 | WOA
+[2026-03-16 11:05:30] DONE: Scene 1 | WOA | run 1 | best=541.780178 | time=7.887s
+[2026-03-16 11:05:39] DONE: Scene 1 | WOA | run 2 | best=1026.379482 | time=8.548s
+[2026-03-16 11:05:47] DONE: Scene 1 | WOA | run 3 | best=777.488638 | time=8.101s
+[2026-03-16 11:05:47] Block finished: Scene 1 | WOA | done=3 | failed=0
+[2026-03-16 11:05:47] Entering block: Scene 1 | FAEAE
+[2026-03-16 11:07:01] DONE: Scene 1 | FAEAE | run 1 | best=295.451637 | time=74.213s
+[2026-03-16 11:08:11] DONE: Scene 1 | FAEAE | run 2 | best=321.685417 | time=69.785s
+[2026-03-16 11:09:33] DONE: Scene 1 | FAEAE | run 3 | best=315.975432 | time=82.444s
+[2026-03-16 11:09:33] Block finished: Scene 1 | FAEAE | done=3 | failed=0
+[2026-03-16 11:09:33] Batch finished | done=18 | failed=0 | pending=0 | elapsed=350.23s

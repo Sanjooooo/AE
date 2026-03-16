@@ -1,0 +1,7 @@
+Algorithm,BestFit,RepresentativeScore,MeanZ,MaxZ,Feasible,RunFile
+AE,332.130992673799,0.6,32.1493867199559,36.2191288812835,1,F:\MATLAB_Project\FAEAE_matlab\results_uav_6alg_formal_safe\run_records\scene2_AE_run023.mat
+PSO,316.05224117357,0.0366586870199297,21.4956983111906,29.7824303466042,1,F:\MATLAB_Project\FAEAE_matlab\results_uav_6alg_formal_safe\run_records\scene2_PSO_run001.mat
+GWO,313.632636312045,0.102553427925809,12.2556552370242,18,1,F:\MATLAB_Project\FAEAE_matlab\results_uav_6alg_formal_safe\run_records\scene2_GWO_run019.mat
+HHO,315.70988990196,0.0799991033819292,13.3123267131513,18,1,F:\MATLAB_Project\FAEAE_matlab\results_uav_6alg_formal_safe\run_records\scene2_HHO_run008.mat
+WOA,562.701632185119,0.491339898576612,22.7226665989486,23.8976648160022,1,F:\MATLAB_Project\FAEAE_matlab\results_uav_6alg_formal_safe\run_records\scene2_WOA_run005.mat
+FAEAE,306.14087029964,0.195578122989547,18.8974504235493,22.4710722025226,1,F:\MATLAB_Project\FAEAE_matlab\results_uav_6alg_formal_safe\run_records\scene2_FAEAE_run030.mat

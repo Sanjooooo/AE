@@ -1,0 +1,80 @@
+% Auto-generated LaTeX tables for UAV comparison results
+
+% =====================================================
+% Table 1: Main UAV comparison results
+% =====================================================
+\begin{table*}[t]
+\centering
+\caption{Main comparison results on the UAV path planning task. Lower values of Mean $\pm$ Std are better.}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{ccccccc}
+\hline
+Scene & AE & PSO & GWO & HHO & WOA & FAEAE \\
+\hline
+Scene 1 & 678.574 $\pm$ 433.931 & 413.089 $\pm$ 213.154 & 330.386 $\pm$ 16.546 & 378.378 $\pm$ 120.646 & 609.237 $\pm$ 238.618 & \textbf{305.897 $\pm$ 10.644} \\
+Scene 2 & 2036.126 $\pm$ 706.079 & 731.835 $\pm$ 550.792 & 360.365 $\pm$ 37.845 & 416.594 $\pm$ 262.760 & 1278.441 $\pm$ 697.248 & \textbf{310.178 $\pm$ 3.439} \\
+Scene 4 & 1631.539 $\pm$ 139.155 & 1386.800 $\pm$ 560.009 & 605.173 $\pm$ 371.500 & 756.647 $\pm$ 391.047 & 1563.612 $\pm$ 416.089 & \textbf{316.301 $\pm$ 7.163} \\
+\hline
+\end{tabular}%
+}
+\end{table*}
+
+% =====================================================
+% Table 2: Feasibility and runtime
+% =====================================================
+\begin{table*}[t]
+\centering
+\caption{Feasibility ratio and average runtime on the UAV path planning task.}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{ccccccccccccc}
+\hline
+Scene & \multicolumn{2}{c}{AE} & \multicolumn{2}{c}{PSO} & \multicolumn{2}{c}{GWO} & \multicolumn{2}{c}{HHO} & \multicolumn{2}{c}{WOA} & \multicolumn{2}{c}{FAEAE} \\
+  & Feas. & Time & Feas. & Time & Feas. & Time & Feas. & Time & Feas. & Time & Feas. & Time \\
+\hline
+Scene 1 & 0.633 & 6.842 & 0.867 & 6.579 & 1.000 & 6.777 & 0.933 & 8.347 & 0.767 & 6.481 & 1.000 & 68.804 \\
+Scene 2 & 0.100 & 6.796 & 0.633 & 6.712 & 1.000 & 6.945 & 0.933 & 8.452 & 0.467 & 6.694 & 1.000 & 92.757 \\
+Scene 4 & 0.000 & 7.567 & 0.033 & 7.221 & 0.633 & 7.601 & 0.333 & 9.308 & 0.067 & 7.183 & 1.000 & 102.358 \\
+\hline
+\end{tabular}%
+}
+\end{table*}
+
+% =====================================================
+% Table 3: Average rank
+% =====================================================
+\begin{table}[t]
+\centering
+\caption{Average rank of all compared algorithms across UAV scenes. Lower is better.}
+\begin{tabular}{cc}
+\hline
+Algorithm & Average Rank \\
+\hline
+\textbf{FAEAE} & \textbf{1.0000} \\
+GWO & 2.0000 \\
+HHO & 3.0000 \\
+PSO & 4.0000 \\
+WOA & 5.0000 \\
+AE & 6.0000 \\
+\hline
+\end{tabular}
+\end{table}
+
+% =====================================================
+% Table 4: FAEAE vs baselines
+% =====================================================
+\begin{table}[t]
+\centering
+\caption{Win/Tie/Loss statistics of FAE-AE against baseline algorithms based on scene-wise mean values.}
+\begin{tabular}{cccc}
+\hline
+Baseline & Win & Tie & Loss \\
+\hline
+AE & 3 & 0 & 0 \\
+PSO & 3 & 0 & 0 \\
+GWO & 3 & 0 & 0 \\
+HHO & 3 & 0 & 0 \\
+WOA & 3 & 0 & 0 \\
+\hline
+\end{tabular}
+\end{table}
+

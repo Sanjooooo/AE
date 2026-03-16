@@ -1,0 +1,7 @@
+[2026-03-16 21:00:08] Starting new batch: F:\MATLAB_Project\FAEAE_matlab\results_scene4_faeae_quick_smoke\uav_comparison_results.mat
+[2026-03-16 21:00:08] Entering block: Scene 4 | FAEAE
+[2026-03-16 21:01:50] DONE: Scene 4 | FAEAE | run 1 | best=315.427093 | time=101.614s
+[2026-03-16 21:03:30] DONE: Scene 4 | FAEAE | run 2 | best=312.711278 | time=100.289s
+[2026-03-16 21:05:18] DONE: Scene 4 | FAEAE | run 3 | best=313.005273 | time=108.035s
+[2026-03-16 21:05:18] Block finished: Scene 4 | FAEAE | done=3 | failed=0
+[2026-03-16 21:05:18] Batch finished | done=3 | failed=0 | pending=0 | elapsed=309.98s

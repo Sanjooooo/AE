@@ -12,7 +12,20 @@ params.useRepair = expCfg.useRepair;
 params.useRegen = expCfg.useRegen;
 params.useHeightTerm = expCfg.useHeightTerm;
 params.useBoundaryTerm = expCfg.useBoundaryTerm;
+% ---------- Scene-4 low-altitude corridor override ----------
+if params.sceneId == 4
+    params.altMin = 8;
+    params.altMax = 26;
+    params.heightRef = 14;
+    params.weights.H = 1.20;
 
+    % IMPORTANT:
+    % also update the z-bounds used by the control-point decision variables
+    params.lbSingle(3) = params.altMin;
+    params.ubSingle(3) = params.altMax;
+    params.lb = repmat(params.lbSingle, 1, params.nCtrl);
+    params.ub = repmat(params.ubSingle, 1, params.nCtrl);
+end
 rng(params.seed);
 
 map = createMap(params);

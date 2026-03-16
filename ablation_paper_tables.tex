@@ -1,0 +1,66 @@
+% Auto-generated LaTeX tables for ablation results
+
+\begin{table*}[t]
+\centering
+\caption{Ablation results on the UAV path planning task (Mean $\pm$ Std). Lower is better.}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{cccccc}
+\hline
+Scene & Base-AE & AE{+}Init & AE{+}Init{+}AOS & AE{+}Init{+}AOS{+}Repair & FAE-AE \\
+\hline
+Scene 1 & 2360.485 $\pm$ 4377.766 & 703.551 $\pm$ 8.058 & 756.150 $\pm$ 9.932 & 725.418 $\pm$ 20.513 & \textbf{683.120 $\pm$ 27.116} \\
+Scene 2 & 3201.363 $\pm$ 2170.139 & 2846.504 $\pm$ 1262.211 & 2448.458 $\pm$ 1328.673 & 1100.980 $\pm$ 145.299 & \textbf{871.561 $\pm$ 182.000} \\
+Scene 4 & 2669.034 $\pm$ 1455.185 & 13445.606 $\pm$ 19249.829 & 16682.960 $\pm$ 20801.490 & 1657.205 $\pm$ 340.504 & \textbf{1384.932 $\pm$ 138.874} \\
+\hline
+\end{tabular}%
+}
+\end{table*}
+
+\begin{table*}[t]
+\centering
+\caption{Feasibility ratio and average runtime of ablation variants.}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{ccccccccccc}
+\hline
+Scene & \multicolumn{2}{c}{Base-AE} & \multicolumn{2}{c}{AE{+}Init} & \multicolumn{2}{c}{AE{+}Init{+}AOS} & \multicolumn{2}{c}{AE{+}Init{+}AOS{+}Repair} & \multicolumn{2}{c}{FAE-AE} \\
+  & Feas. & Time & Feas. & Time & Feas. & Time & Feas. & Time & Feas. & Time \\
+\hline
+Scene 1 & 0.550 & 4.489 & 1.000 & 4.455 & 1.000 & 4.542 & 1.000 & 38.579 & 1.000 & 42.771 \\
+Scene 2 & 0.000 & 4.392 & 0.050 & 4.333 & 0.150 & 4.410 & 1.000 & 46.870 & 1.000 & 47.194 \\
+Scene 4 & 0.000 & 7.738 & 0.250 & 7.741 & 0.300 & 7.796 & 1.000 & 95.607 & 1.000 & 96.144 \\
+\hline
+\end{tabular}%
+}
+\end{table*}
+
+\begin{table}[t]
+\centering
+\caption{Average rank of ablation variants across UAV scenes. Lower is better.}
+\begin{tabular}{cc}
+\hline
+Method & Average Rank \\
+\hline
+\textbf{FAE-AE} & \textbf{1.0000} \\
+AE{+}Init{+}AOS{+}Repair & 2.3333 \\
+AE{+}Init & 3.3333 \\
+AE{+}Init{+}AOS & 4.0000 \\
+Base-AE & 4.3333 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{Win/Tie/Loss statistics of FAE-AE against other ablation variants based on scene-wise mean values.}
+\begin{tabular}{cccc}
+\hline
+Baseline & Win & Tie & Loss \\
+\hline
+Base-AE & 3 & 0 & 0 \\
+AE{+}Init & 3 & 0 & 0 \\
+AE{+}Init{+}AOS & 3 & 0 & 0 \\
+AE{+}Init{+}AOS{+}Repair & 3 & 0 & 0 \\
+\hline
+\end{tabular}
+\end{table}
+

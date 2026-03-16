@@ -1,0 +1,218 @@
+[2026-03-16 11:15:39] Starting new batch: F:\MATLAB_Project\FAEAE_matlab\results_uav_6alg_mid\uav_comparison_results.mat
+[2026-03-16 11:15:39] Entering block: Scene 1 | AE
+[2026-03-16 11:15:47] DONE: Scene 1 | AE | run 1 | best=1122.125319 | time=8.007s
+[2026-03-16 11:15:55] DONE: Scene 1 | AE | run 2 | best=444.214333 | time=7.370s
+[2026-03-16 11:16:02] DONE: Scene 1 | AE | run 3 | best=501.644040 | time=7.331s
+[2026-03-16 11:16:09] DONE: Scene 1 | AE | run 4 | best=358.263218 | time=7.358s
+[2026-03-16 11:16:17] DONE: Scene 1 | AE | run 5 | best=351.008455 | time=7.388s
+[2026-03-16 11:16:24] DONE: Scene 1 | AE | run 6 | best=338.300207 | time=7.392s
+[2026-03-16 11:16:32] DONE: Scene 1 | AE | run 7 | best=1419.123169 | time=7.358s
+[2026-03-16 11:16:39] DONE: Scene 1 | AE | run 8 | best=380.279439 | time=7.355s
+[2026-03-16 11:16:46] DONE: Scene 1 | AE | run 9 | best=464.009192 | time=7.295s
+[2026-03-16 11:16:53] DONE: Scene 1 | AE | run 10 | best=371.537448 | time=7.240s
+[2026-03-16 11:16:53] Block finished: Scene 1 | AE | done=10 | failed=0
+[2026-03-16 11:16:53] Entering block: Scene 1 | PSO
+[2026-03-16 11:17:01] DONE: Scene 1 | PSO | run 1 | best=345.570433 | time=7.169s
+[2026-03-16 11:17:08] DONE: Scene 1 | PSO | run 2 | best=467.971958 | time=7.201s
+[2026-03-16 11:17:15] DONE: Scene 1 | PSO | run 3 | best=323.641203 | time=7.144s
+[2026-03-16 11:17:22] DONE: Scene 1 | PSO | run 4 | best=455.851752 | time=7.140s
+[2026-03-16 11:17:29] DONE: Scene 1 | PSO | run 5 | best=369.772570 | time=7.125s
+[2026-03-16 11:17:36] DONE: Scene 1 | PSO | run 6 | best=362.172502 | time=7.074s
+[2026-03-16 11:17:44] DONE: Scene 1 | PSO | run 7 | best=378.661616 | time=7.103s
+[2026-03-16 11:17:51] DONE: Scene 1 | PSO | run 8 | best=327.094193 | time=7.143s
+[2026-03-16 11:17:58] DONE: Scene 1 | PSO | run 9 | best=1026.586260 | time=7.175s
+[2026-03-16 11:18:05] DONE: Scene 1 | PSO | run 10 | best=346.637509 | time=7.122s
+[2026-03-16 11:18:05] Block finished: Scene 1 | PSO | done=10 | failed=0
+[2026-03-16 11:18:05] Entering block: Scene 1 | GWO
+[2026-03-16 11:18:13] DONE: Scene 1 | GWO | run 1 | best=350.182886 | time=7.460s
+[2026-03-16 11:18:20] DONE: Scene 1 | GWO | run 2 | best=313.614660 | time=7.513s
+[2026-03-16 11:18:28] DONE: Scene 1 | GWO | run 3 | best=338.863000 | time=7.434s
+[2026-03-16 11:18:35] DONE: Scene 1 | GWO | run 4 | best=330.379770 | time=7.538s
+[2026-03-16 11:18:43] DONE: Scene 1 | GWO | run 5 | best=321.295607 | time=7.433s
+[2026-03-16 11:18:50] DONE: Scene 1 | GWO | run 6 | best=310.763901 | time=7.499s
+[2026-03-16 11:18:58] DONE: Scene 1 | GWO | run 7 | best=334.235310 | time=7.531s
+[2026-03-16 11:19:05] DONE: Scene 1 | GWO | run 8 | best=348.559158 | time=7.505s
+[2026-03-16 11:19:13] DONE: Scene 1 | GWO | run 9 | best=343.593021 | time=7.516s
+[2026-03-16 11:19:20] DONE: Scene 1 | GWO | run 10 | best=322.489830 | time=7.476s
+[2026-03-16 11:19:20] Block finished: Scene 1 | GWO | done=10 | failed=0
+[2026-03-16 11:19:20] Entering block: Scene 1 | HHO
+[2026-03-16 11:19:29] DONE: Scene 1 | HHO | run 1 | best=379.352765 | time=8.967s
+[2026-03-16 11:19:38] DONE: Scene 1 | HHO | run 2 | best=863.945851 | time=8.782s
+[2026-03-16 11:19:47] DONE: Scene 1 | HHO | run 3 | best=375.774393 | time=8.820s
+[2026-03-16 11:19:56] DONE: Scene 1 | HHO | run 4 | best=742.998383 | time=9.027s
+[2026-03-16 11:20:05] DONE: Scene 1 | HHO | run 5 | best=369.397188 | time=9.151s
+[2026-03-16 11:20:14] DONE: Scene 1 | HHO | run 6 | best=347.386932 | time=8.913s
+[2026-03-16 11:20:23] DONE: Scene 1 | HHO | run 7 | best=367.483081 | time=8.906s
+[2026-03-16 11:20:32] DONE: Scene 1 | HHO | run 8 | best=316.878762 | time=8.939s
+[2026-03-16 11:20:41] DONE: Scene 1 | HHO | run 9 | best=349.311094 | time=8.729s
+[2026-03-16 11:20:50] DONE: Scene 1 | HHO | run 10 | best=351.178101 | time=8.969s
+[2026-03-16 11:20:50] Block finished: Scene 1 | HHO | done=10 | failed=0
+[2026-03-16 11:20:50] Entering block: Scene 1 | WOA
+[2026-03-16 11:20:57] DONE: Scene 1 | WOA | run 1 | best=541.780178 | time=7.109s
+[2026-03-16 11:21:04] DONE: Scene 1 | WOA | run 2 | best=1026.379482 | time=7.110s
+[2026-03-16 11:21:11] DONE: Scene 1 | WOA | run 3 | best=777.488638 | time=7.086s
+[2026-03-16 11:21:18] DONE: Scene 1 | WOA | run 4 | best=455.950384 | time=7.126s
+[2026-03-16 11:21:26] DONE: Scene 1 | WOA | run 5 | best=977.559088 | time=7.151s
+[2026-03-16 11:21:33] DONE: Scene 1 | WOA | run 6 | best=446.152723 | time=7.061s
+[2026-03-16 11:21:40] DONE: Scene 1 | WOA | run 7 | best=325.571075 | time=7.106s
+[2026-03-16 11:21:47] DONE: Scene 1 | WOA | run 8 | best=349.650820 | time=7.117s
+[2026-03-16 11:21:54] DONE: Scene 1 | WOA | run 9 | best=546.129684 | time=7.102s
+[2026-03-16 11:22:01] DONE: Scene 1 | WOA | run 10 | best=589.064584 | time=7.133s
+[2026-03-16 11:22:01] Block finished: Scene 1 | WOA | done=10 | failed=0
+[2026-03-16 11:22:01] Entering block: Scene 1 | FAEAE
+[2026-03-16 11:23:13] DONE: Scene 1 | FAEAE | run 1 | best=295.451637 | time=71.228s
+[2026-03-16 11:24:22] DONE: Scene 1 | FAEAE | run 2 | best=321.685417 | time=69.719s
+[2026-03-16 11:25:45] DONE: Scene 1 | FAEAE | run 3 | best=315.975432 | time=82.243s
+[2026-03-16 11:26:59] DONE: Scene 1 | FAEAE | run 4 | best=323.154431 | time=74.633s
+[2026-03-16 11:28:16] DONE: Scene 1 | FAEAE | run 5 | best=312.102947 | time=76.655s
+[2026-03-16 11:29:28] DONE: Scene 1 | FAEAE | run 6 | best=300.762879 | time=71.527s
+[2026-03-16 11:30:45] DONE: Scene 1 | FAEAE | run 7 | best=314.046374 | time=77.471s
+[2026-03-16 11:32:06] DONE: Scene 1 | FAEAE | run 8 | best=324.359960 | time=81.077s
+[2026-03-16 11:33:17] DONE: Scene 1 | FAEAE | run 9 | best=294.569300 | time=71.044s
+[2026-03-16 11:34:28] DONE: Scene 1 | FAEAE | run 10 | best=324.339178 | time=70.548s
+[2026-03-16 11:34:28] Block finished: Scene 1 | FAEAE | done=10 | failed=0
+[2026-03-16 11:34:28] Entering block: Scene 2 | AE
+[2026-03-16 11:34:35] DONE: Scene 2 | AE | run 1 | best=2649.545729 | time=7.452s
+[2026-03-16 11:34:43] DONE: Scene 2 | AE | run 2 | best=2163.804906 | time=7.414s
+[2026-03-16 11:34:50] DONE: Scene 2 | AE | run 3 | best=1218.582202 | time=7.441s
+[2026-03-16 11:34:58] DONE: Scene 2 | AE | run 4 | best=2337.237283 | time=7.366s
+[2026-03-16 11:35:05] DONE: Scene 2 | AE | run 5 | best=2479.077700 | time=7.389s
+[2026-03-16 11:35:13] DONE: Scene 2 | AE | run 6 | best=2216.601052 | time=7.436s
+[2026-03-16 11:35:20] DONE: Scene 2 | AE | run 7 | best=1371.802926 | time=7.378s
+[2026-03-16 11:35:28] DONE: Scene 2 | AE | run 8 | best=2266.060541 | time=7.885s
+[2026-03-16 11:35:36] DONE: Scene 2 | AE | run 9 | best=1352.826220 | time=7.872s
+[2026-03-16 11:35:43] DONE: Scene 2 | AE | run 10 | best=2306.832194 | time=7.400s
+[2026-03-16 11:35:43] Block finished: Scene 2 | AE | done=10 | failed=0
+[2026-03-16 11:35:43] Entering block: Scene 2 | PSO
+[2026-03-16 11:35:51] DONE: Scene 2 | PSO | run 1 | best=316.052241 | time=7.170s
+[2026-03-16 11:35:58] DONE: Scene 2 | PSO | run 2 | best=910.641783 | time=7.285s
+[2026-03-16 11:36:05] DONE: Scene 2 | PSO | run 3 | best=397.922544 | time=7.182s
+[2026-03-16 11:36:13] DONE: Scene 2 | PSO | run 4 | best=307.809402 | time=7.250s
+[2026-03-16 11:36:20] DONE: Scene 2 | PSO | run 5 | best=415.183135 | time=7.183s
+[2026-03-16 11:36:27] DONE: Scene 2 | PSO | run 6 | best=1125.312696 | time=7.272s
+[2026-03-16 11:36:34] DONE: Scene 2 | PSO | run 7 | best=346.465241 | time=7.261s
+[2026-03-16 11:36:42] DONE: Scene 2 | PSO | run 8 | best=299.929532 | time=7.143s
+[2026-03-16 11:36:49] DONE: Scene 2 | PSO | run 9 | best=1034.414914 | time=7.293s
+[2026-03-16 11:36:56] DONE: Scene 2 | PSO | run 10 | best=370.086450 | time=7.248s
+[2026-03-16 11:36:56] Block finished: Scene 2 | PSO | done=10 | failed=0
+[2026-03-16 11:36:56] Entering block: Scene 2 | GWO
+[2026-03-16 11:37:04] DONE: Scene 2 | GWO | run 1 | best=309.068093 | time=7.480s
+[2026-03-16 11:37:11] DONE: Scene 2 | GWO | run 2 | best=330.139721 | time=7.514s
+[2026-03-16 11:37:19] DONE: Scene 2 | GWO | run 3 | best=380.031209 | time=7.511s
+[2026-03-16 11:37:27] DONE: Scene 2 | GWO | run 4 | best=408.891726 | time=7.502s
+[2026-03-16 11:37:34] DONE: Scene 2 | GWO | run 5 | best=351.849127 | time=7.522s
+[2026-03-16 11:37:42] DONE: Scene 2 | GWO | run 6 | best=337.811548 | time=7.547s
+[2026-03-16 11:37:49] DONE: Scene 2 | GWO | run 7 | best=340.691308 | time=7.574s
+[2026-03-16 11:37:57] DONE: Scene 2 | GWO | run 8 | best=421.611458 | time=7.515s
+[2026-03-16 11:38:05] DONE: Scene 2 | GWO | run 9 | best=332.047195 | time=7.512s
+[2026-03-16 11:38:12] DONE: Scene 2 | GWO | run 10 | best=408.842592 | time=7.616s
+[2026-03-16 11:38:12] Block finished: Scene 2 | GWO | done=10 | failed=0
+[2026-03-16 11:38:12] Entering block: Scene 2 | HHO
+[2026-03-16 11:38:21] DONE: Scene 2 | HHO | run 1 | best=387.215567 | time=8.960s
+[2026-03-16 11:38:30] DONE: Scene 2 | HHO | run 2 | best=325.610425 | time=8.902s
+[2026-03-16 11:38:39] DONE: Scene 2 | HHO | run 3 | best=366.264022 | time=9.082s
+[2026-03-16 11:38:48] DONE: Scene 2 | HHO | run 4 | best=306.717125 | time=8.870s
+[2026-03-16 11:38:57] DONE: Scene 2 | HHO | run 5 | best=312.727589 | time=8.856s
+[2026-03-16 11:39:06] DONE: Scene 2 | HHO | run 6 | best=299.931808 | time=8.813s
+[2026-03-16 11:39:15] DONE: Scene 2 | HHO | run 7 | best=294.476079 | time=8.907s
+[2026-03-16 11:39:24] DONE: Scene 2 | HHO | run 8 | best=315.709890 | time=8.933s
+[2026-03-16 11:39:33] DONE: Scene 2 | HHO | run 9 | best=405.848258 | time=8.961s
+[2026-03-16 11:39:42] DONE: Scene 2 | HHO | run 10 | best=349.254770 | time=9.139s
+[2026-03-16 11:39:42] Block finished: Scene 2 | HHO | done=10 | failed=0
+[2026-03-16 11:39:42] Entering block: Scene 2 | WOA
+[2026-03-16 11:39:50] DONE: Scene 2 | WOA | run 1 | best=501.606423 | time=7.239s
+[2026-03-16 11:39:57] DONE: Scene 2 | WOA | run 2 | best=2094.537066 | time=7.262s
+[2026-03-16 11:40:04] DONE: Scene 2 | WOA | run 3 | best=717.535348 | time=7.243s
+[2026-03-16 11:40:12] DONE: Scene 2 | WOA | run 4 | best=653.250287 | time=7.285s
+[2026-03-16 11:40:19] DONE: Scene 2 | WOA | run 5 | best=562.701632 | time=7.275s
+[2026-03-16 11:40:26] DONE: Scene 2 | WOA | run 6 | best=1883.643755 | time=7.290s
+[2026-03-16 11:40:34] DONE: Scene 2 | WOA | run 7 | best=485.573831 | time=7.273s
+[2026-03-16 11:40:41] DONE: Scene 2 | WOA | run 8 | best=1819.797197 | time=7.311s
+[2026-03-16 11:40:49] DONE: Scene 2 | WOA | run 9 | best=1923.958244 | time=7.254s
+[2026-03-16 11:40:56] DONE: Scene 2 | WOA | run 10 | best=2004.709817 | time=7.331s
+[2026-03-16 11:40:56] Block finished: Scene 2 | WOA | done=10 | failed=0
+[2026-03-16 11:40:56] Entering block: Scene 2 | FAEAE
+[2026-03-16 11:42:29] DONE: Scene 2 | FAEAE | run 1 | best=304.351707 | time=93.196s
+[2026-03-16 11:44:02] DONE: Scene 2 | FAEAE | run 2 | best=310.410890 | time=92.496s
+[2026-03-16 11:45:44] DONE: Scene 2 | FAEAE | run 3 | best=312.710456 | time=102.452s
+[2026-03-16 11:47:25] DONE: Scene 2 | FAEAE | run 4 | best=307.819286 | time=100.431s
+[2026-03-16 11:49:03] DONE: Scene 2 | FAEAE | run 5 | best=308.198448 | time=98.510s
+[2026-03-16 11:50:36] DONE: Scene 2 | FAEAE | run 6 | best=307.650059 | time=92.114s
+[2026-03-16 11:52:18] DONE: Scene 2 | FAEAE | run 7 | best=310.751298 | time=102.407s
+[2026-03-16 11:53:51] DONE: Scene 2 | FAEAE | run 8 | best=312.425137 | time=92.806s
+[2026-03-16 11:55:29] DONE: Scene 2 | FAEAE | run 9 | best=309.241821 | time=97.680s
+[2026-03-16 11:57:02] DONE: Scene 2 | FAEAE | run 10 | best=304.571677 | time=93.350s
+[2026-03-16 11:57:02] Block finished: Scene 2 | FAEAE | done=10 | failed=0
+[2026-03-16 11:57:02] Entering block: Scene 4 | AE
+[2026-03-16 11:57:10] DONE: Scene 4 | AE | run 1 | best=2276.786253 | time=7.388s
+[2026-03-16 11:57:17] DONE: Scene 4 | AE | run 2 | best=1666.013930 | time=7.400s
+[2026-03-16 11:57:25] DONE: Scene 4 | AE | run 3 | best=1823.525546 | time=7.458s
+[2026-03-16 11:57:32] DONE: Scene 4 | AE | run 4 | best=1883.044726 | time=7.356s
+[2026-03-16 11:57:40] DONE: Scene 4 | AE | run 5 | best=1762.983983 | time=7.437s
+[2026-03-16 11:57:47] DONE: Scene 4 | AE | run 6 | best=1587.841845 | time=7.473s
+[2026-03-16 11:57:55] DONE: Scene 4 | AE | run 7 | best=1886.641576 | time=7.444s
+[2026-03-16 11:58:02] DONE: Scene 4 | AE | run 8 | best=1653.985205 | time=7.486s
+[2026-03-16 11:58:10] DONE: Scene 4 | AE | run 9 | best=1740.018154 | time=7.400s
+[2026-03-16 11:58:17] DONE: Scene 4 | AE | run 10 | best=1545.424515 | time=7.421s
+[2026-03-16 11:58:18] Block finished: Scene 4 | AE | done=10 | failed=0
+[2026-03-16 11:58:18] Entering block: Scene 4 | PSO
+[2026-03-16 11:58:25] DONE: Scene 4 | PSO | run 1 | best=425.851049 | time=7.294s
+[2026-03-16 11:58:32] DONE: Scene 4 | PSO | run 2 | best=753.958056 | time=7.244s
+[2026-03-16 11:58:40] DONE: Scene 4 | PSO | run 3 | best=1157.472660 | time=7.303s
+[2026-03-16 11:58:47] DONE: Scene 4 | PSO | run 4 | best=659.881438 | time=7.243s
+[2026-03-16 11:58:54] DONE: Scene 4 | PSO | run 5 | best=747.238733 | time=7.276s
+[2026-03-16 11:59:02] DONE: Scene 4 | PSO | run 6 | best=293.822066 | time=7.296s
+[2026-03-16 11:59:09] DONE: Scene 4 | PSO | run 7 | best=406.657735 | time=7.247s
+[2026-03-16 11:59:16] DONE: Scene 4 | PSO | run 8 | best=755.999292 | time=7.264s
+[2026-03-16 11:59:24] DONE: Scene 4 | PSO | run 9 | best=1239.402983 | time=7.312s
+[2026-03-16 11:59:31] DONE: Scene 4 | PSO | run 10 | best=299.016346 | time=7.412s
+[2026-03-16 11:59:31] Block finished: Scene 4 | PSO | done=10 | failed=0
+[2026-03-16 11:59:31] Entering block: Scene 4 | GWO
+[2026-03-16 11:59:39] DONE: Scene 4 | GWO | run 1 | best=344.433632 | time=7.896s
+[2026-03-16 11:59:47] DONE: Scene 4 | GWO | run 2 | best=370.713883 | time=7.806s
+[2026-03-16 11:59:55] DONE: Scene 4 | GWO | run 3 | best=342.915403 | time=7.601s
+[2026-03-16 12:00:03] DONE: Scene 4 | GWO | run 4 | best=392.251275 | time=7.701s
+[2026-03-16 12:00:10] DONE: Scene 4 | GWO | run 5 | best=385.546211 | time=7.633s
+[2026-03-16 12:00:18] DONE: Scene 4 | GWO | run 6 | best=387.352815 | time=7.566s
+[2026-03-16 12:00:26] DONE: Scene 4 | GWO | run 7 | best=346.254833 | time=7.647s
+[2026-03-16 12:00:34] DONE: Scene 4 | GWO | run 8 | best=354.356672 | time=7.684s
+[2026-03-16 12:00:41] DONE: Scene 4 | GWO | run 9 | best=401.231534 | time=7.637s
+[2026-03-16 12:00:49] DONE: Scene 4 | GWO | run 10 | best=360.691262 | time=7.657s
+[2026-03-16 12:00:49] Block finished: Scene 4 | GWO | done=10 | failed=0
+[2026-03-16 12:00:49] Entering block: Scene 4 | HHO
+[2026-03-16 12:00:58] DONE: Scene 4 | HHO | run 1 | best=756.082966 | time=9.213s
+[2026-03-16 12:01:08] DONE: Scene 4 | HHO | run 2 | best=347.076629 | time=9.234s
+[2026-03-16 12:01:17] DONE: Scene 4 | HHO | run 3 | best=934.216588 | time=9.360s
+[2026-03-16 12:01:26] DONE: Scene 4 | HHO | run 4 | best=979.814635 | time=8.895s
+[2026-03-16 12:01:36] DONE: Scene 4 | HHO | run 5 | best=799.492852 | time=9.229s
+[2026-03-16 12:01:45] DONE: Scene 4 | HHO | run 6 | best=302.790638 | time=9.067s
+[2026-03-16 12:01:54] DONE: Scene 4 | HHO | run 7 | best=301.423368 | time=9.210s
+[2026-03-16 12:02:03] DONE: Scene 4 | HHO | run 8 | best=340.851181 | time=9.124s
+[2026-03-16 12:02:13] DONE: Scene 4 | HHO | run 9 | best=881.711579 | time=9.218s
+[2026-03-16 12:02:22] DONE: Scene 4 | HHO | run 10 | best=316.133576 | time=9.042s
+[2026-03-16 12:02:22] Block finished: Scene 4 | HHO | done=10 | failed=0
+[2026-03-16 12:02:22] Entering block: Scene 4 | WOA
+[2026-03-16 12:02:29] DONE: Scene 4 | WOA | run 1 | best=1252.648315 | time=7.350s
+[2026-03-16 12:02:37] DONE: Scene 4 | WOA | run 2 | best=896.783943 | time=7.316s
+[2026-03-16 12:02:44] DONE: Scene 4 | WOA | run 3 | best=1125.442341 | time=7.278s
+[2026-03-16 12:02:52] DONE: Scene 4 | WOA | run 4 | best=981.845895 | time=7.261s
+[2026-03-16 12:02:59] DONE: Scene 4 | WOA | run 5 | best=1028.758414 | time=7.295s
+[2026-03-16 12:03:06] DONE: Scene 4 | WOA | run 6 | best=1101.363535 | time=7.303s
+[2026-03-16 12:03:14] DONE: Scene 4 | WOA | run 7 | best=442.932792 | time=7.264s
+[2026-03-16 12:03:21] DONE: Scene 4 | WOA | run 8 | best=896.689037 | time=7.301s
+[2026-03-16 12:03:29] DONE: Scene 4 | WOA | run 9 | best=1000.099380 | time=7.264s
+[2026-03-16 12:03:36] DONE: Scene 4 | WOA | run 10 | best=1133.147753 | time=7.258s
+[2026-03-16 12:03:36] Block finished: Scene 4 | WOA | done=10 | failed=0
+[2026-03-16 12:03:36] Entering block: Scene 4 | FAEAE
+[2026-03-16 12:05:29] DONE: Scene 4 | FAEAE | run 1 | best=318.722845 | time=112.723s
+[2026-03-16 12:07:22] DONE: Scene 4 | FAEAE | run 2 | best=312.052298 | time=112.667s
+[2026-03-16 12:09:14] DONE: Scene 4 | FAEAE | run 3 | best=314.126763 | time=112.637s
+[2026-03-16 12:11:05] DONE: Scene 4 | FAEAE | run 4 | best=314.346586 | time=110.662s
+[2026-03-16 12:12:58] DONE: Scene 4 | FAEAE | run 5 | best=312.802728 | time=112.672s
+[2026-03-16 12:14:44] DONE: Scene 4 | FAEAE | run 6 | best=305.338340 | time=105.472s
+[2026-03-16 12:16:38] DONE: Scene 4 | FAEAE | run 7 | best=314.036813 | time=114.187s
+[2026-03-16 12:18:25] DONE: Scene 4 | FAEAE | run 8 | best=315.617252 | time=107.320s
+[2026-03-16 12:20:08] DONE: Scene 4 | FAEAE | run 9 | best=313.540874 | time=102.654s
+[2026-03-16 12:21:58] DONE: Scene 4 | FAEAE | run 10 | best=315.194803 | time=109.926s
+[2026-03-16 12:21:58] Block finished: Scene 4 | FAEAE | done=10 | failed=0
+[2026-03-16 12:21:58] Batch finished | done=180 | failed=0 | pending=0 | elapsed=3979.01s

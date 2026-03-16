@@ -1,0 +1,16 @@
+SceneId,Method,BestFit,Feasible,SourceFolder
+1,Base-AE,544.665962485616,1,F:\MATLAB_Project\FAEAE_matlab\ablation_scene1_base_ae
+1,AE+Init,685.51435924628,1,F:\MATLAB_Project\FAEAE_matlab\ablation_scene1_init
+1,AE+Init+AOS,733.556600188323,1,F:\MATLAB_Project\FAEAE_matlab\ablation_scene1_init_aos
+1,AE+Init+AOS+Repair,677.865761297734,1,F:\MATLAB_Project\FAEAE_matlab\ablation_scene1_init_aos_repair
+1,FAE-AE,634.636750541684,1,F:\MATLAB_Project\FAEAE_matlab\ablation_scene1_full_faeae
+2,Base-AE,1068.64119607194,0,F:\MATLAB_Project\FAEAE_matlab\ablation_scene2_base_ae
+2,AE+Init,2571.17282071514,1,F:\MATLAB_Project\FAEAE_matlab\ablation_scene2_init
+2,AE+Init+AOS,2317.87704370153,1,F:\MATLAB_Project\FAEAE_matlab\ablation_scene2_init_aos
+2,AE+Init+AOS+Repair,899.166747597734,1,F:\MATLAB_Project\FAEAE_matlab\ablation_scene2_init_aos_repair
+2,FAE-AE,671.906777157574,1,F:\MATLAB_Project\FAEAE_matlab\ablation_scene2_full_faeae
+4,Base-AE,1671.11819283774,0,F:\MATLAB_Project\FAEAE_matlab\ablation_scene4_base_ae
+4,AE+Init,16025.5051904283,1,F:\MATLAB_Project\FAEAE_matlab\ablation_scene4_init
+4,AE+Init+AOS,7172.42405236911,1,F:\MATLAB_Project\FAEAE_matlab\ablation_scene4_init_aos
+4,AE+Init+AOS+Repair,1285.60592501961,1,F:\MATLAB_Project\FAEAE_matlab\ablation_scene4_init_aos_repair
+4,FAE-AE,1238.4928982285,1,F:\MATLAB_Project\FAEAE_matlab\ablation_scene4_full_faeae
