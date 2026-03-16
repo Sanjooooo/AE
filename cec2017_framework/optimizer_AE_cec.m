@@ -1,25 +1,26 @@
-function result = optimizer_AE_cec(funHandle, lb, ub, dim, maxFEs, runSeed)
+function result = optimizer_AE_cec(funHandle, lb, ub, dim, algCfg, runSeed)
 %OPTIMIZER_AE_CEC Baseline AE-style optimizer for CEC2017.
 %
 % Inputs:
 %   funHandle - objective function handle, accepts column vector
 %   lb, ub    - lower/upper bounds (dim x 1)
 %   dim       - problem dimension
-%   maxFEs    - maximum number of function evaluations
+%   algCfg    - algorithm configuration struct
 %   runSeed   - random seed
 %
-% Output:
-%   result.bestFit
-%   result.bestX
+% Output (standardized):
+%   result.bestFitness
+%   result.bestPosition
 %   result.convergence
-%   result.FEsUsed
-%   result.runTime
+%   result.runtime
+%   result.nFEs
 
-rng(runSeed);
+rng(runSeed, 'twister');
 
 % ---------- Basic parameters ----------
-popSize = 30;
-maxIter = ceil(maxFEs / popSize);
+popSize = algCfg.popSize;
+maxFEs = algCfg.maxFEs;
+maxIter = algCfg.maxIter;
 
 % ---------- Initialization ----------
 pop = repmat(lb, 1, popSize) + rand(dim, popSize) .* repmat((ub - lb), 1, popSize);
@@ -67,7 +68,7 @@ for t = 1:maxIter
 
         xElite = pop(:, order(randi(eliteNum)));
 
-        dirBest  = bestX - x;
+        dirBest = bestX - x;
         dirElite = eliteMean - x;
         dirSample = xElite - x;
 
@@ -75,7 +76,6 @@ for t = 1:maxIter
         diff34 = xr3 - xr4;
 
         randVec1 = 2 * rand(dim, 1) - 1;
-        randVec2 = randn(dim, 1);
 
         % Fixed balanced AE-style search
         a1 = 0.30 + 0.10 * (1 - tau);
@@ -124,7 +124,7 @@ for t = 1:maxIter
         convergence(t:end) = bestFit;
         break;
     end
-    
+
     if mod(t, max(1, floor(maxIter/5))) == 0 || t == 1
         fprintf('    Iter %d / %d | Best = %.6e | FEs = %d\n', t, maxIter, bestFit, FEs);
     end
@@ -132,9 +132,11 @@ end
 
 runTime = toc(tStart);
 
-result.bestFit = bestFit;
-result.bestX = bestX;
-result.convergence = convergence;
-result.FEsUsed = FEs;
-result.runTime = runTime;
+% ---------- Standardized output ----------
+result = struct();
+result.bestFitness = bestFit;
+result.bestPosition = bestX(:);
+result.convergence = convergence(:);
+result.runtime = runTime;
+result.nFEs = FEs;
 end

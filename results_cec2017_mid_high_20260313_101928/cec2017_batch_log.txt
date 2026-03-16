@@ -1,0 +1,362 @@
+[2026-03-13 10:19:28] Starting new batch: F:\MATLAB_Project\FAEAE_matlab\results_cec2017_mid_high_20260313_101928\cec2017_batch_results.mat
+[2026-03-13 10:19:28] Entering block: F1 | AE
+[2026-03-13 10:19:34] DONE: F1 | AE | run 1 | best=9.349966e+06 | time=5.869s
+[2026-03-13 10:19:39] DONE: F1 | AE | run 2 | best=8.358524e+06 | time=5.737s
+[2026-03-13 10:19:45] DONE: F1 | AE | run 3 | best=8.864042e+06 | time=5.786s
+[2026-03-13 10:19:51] DONE: F1 | AE | run 4 | best=6.420017e+06 | time=5.841s
+[2026-03-13 10:19:57] DONE: F1 | AE | run 5 | best=8.893044e+06 | time=5.791s
+[2026-03-13 10:20:03] DONE: F1 | AE | run 6 | best=7.845668e+06 | time=5.698s
+[2026-03-13 10:20:08] DONE: F1 | AE | run 7 | best=9.580769e+06 | time=5.704s
+[2026-03-13 10:20:14] DONE: F1 | AE | run 8 | best=8.596405e+06 | time=5.705s
+[2026-03-13 10:20:20] DONE: F1 | AE | run 9 | best=8.445568e+06 | time=5.710s
+[2026-03-13 10:20:26] DONE: F1 | AE | run 10 | best=8.177967e+06 | time=5.703s
+[2026-03-13 10:20:26] Block finished: F1 | AE | done=10 | failed=0
+[2026-03-13 10:20:26] Entering block: F1 | DE
+[2026-03-13 10:20:27] DONE: F1 | DE | run 1 | best=1.631373e+05 | time=1.297s
+[2026-03-13 10:20:28] DONE: F1 | DE | run 2 | best=1.006499e+02 | time=1.282s
+[2026-03-13 10:20:29] DONE: F1 | DE | run 3 | best=1.429876e+06 | time=1.234s
+[2026-03-13 10:20:31] DONE: F1 | DE | run 4 | best=1.758981e+05 | time=1.265s
+[2026-03-13 10:20:32] DONE: F1 | DE | run 5 | best=5.484219e+07 | time=1.254s
+[2026-03-13 10:20:33] DONE: F1 | DE | run 6 | best=3.252756e+04 | time=1.248s
+[2026-03-13 10:20:35] DONE: F1 | DE | run 7 | best=1.377334e+04 | time=1.242s
+[2026-03-13 10:20:36] DONE: F1 | DE | run 8 | best=1.061286e+06 | time=1.241s
+[2026-03-13 10:20:37] DONE: F1 | DE | run 9 | best=1.047110e+06 | time=1.242s
+[2026-03-13 10:20:38] DONE: F1 | DE | run 10 | best=3.032856e+03 | time=1.250s
+[2026-03-13 10:20:38] Block finished: F1 | DE | done=10 | failed=0
+[2026-03-13 10:20:38] Entering block: F1 | PSO
+[2026-03-13 10:20:39] DONE: F1 | PSO | run 1 | best=1.026802e+09 | time=0.775s
+[2026-03-13 10:20:40] DONE: F1 | PSO | run 2 | best=2.169156e+03 | time=0.728s
+[2026-03-13 10:20:41] DONE: F1 | PSO | run 3 | best=1.184049e+09 | time=0.754s
+[2026-03-13 10:20:42] DONE: F1 | PSO | run 4 | best=7.857509e+09 | time=0.748s
+[2026-03-13 10:20:42] DONE: F1 | PSO | run 5 | best=8.541179e+02 | time=0.738s
+[2026-03-13 10:20:43] DONE: F1 | PSO | run 6 | best=2.615924e+03 | time=0.739s
+[2026-03-13 10:20:44] DONE: F1 | PSO | run 7 | best=4.411882e+02 | time=0.717s
+[2026-03-13 10:20:45] DONE: F1 | PSO | run 8 | best=1.604920e+09 | time=0.739s
+[2026-03-13 10:20:45] DONE: F1 | PSO | run 9 | best=1.026799e+09 | time=0.751s
+[2026-03-13 10:20:46] DONE: F1 | PSO | run 10 | best=5.837463e+02 | time=0.720s
+[2026-03-13 10:20:46] Block finished: F1 | PSO | done=10 | failed=0
+[2026-03-13 10:20:46] Entering block: F1 | GWO
+[2026-03-13 10:20:47] DONE: F1 | GWO | run 1 | best=1.010245e+10 | time=1.130s
+[2026-03-13 10:20:48] DONE: F1 | GWO | run 2 | best=1.001225e+10 | time=1.096s
+[2026-03-13 10:20:50] DONE: F1 | GWO | run 3 | best=1.519804e+10 | time=1.082s
+[2026-03-13 10:20:51] DONE: F1 | GWO | run 4 | best=1.340010e+10 | time=1.085s
+[2026-03-13 10:20:52] DONE: F1 | GWO | run 5 | best=1.316318e+10 | time=1.085s
+[2026-03-13 10:20:53] DONE: F1 | GWO | run 6 | best=1.165975e+10 | time=1.080s
+[2026-03-13 10:20:54] DONE: F1 | GWO | run 7 | best=1.343147e+10 | time=1.072s
+[2026-03-13 10:20:55] DONE: F1 | GWO | run 8 | best=1.346410e+10 | time=1.080s
+[2026-03-13 10:20:56] DONE: F1 | GWO | run 9 | best=1.329309e+10 | time=1.084s
+[2026-03-13 10:20:58] DONE: F1 | GWO | run 10 | best=1.536906e+10 | time=1.079s
+[2026-03-13 10:20:58] Block finished: F1 | GWO | done=10 | failed=0
+[2026-03-13 10:20:58] Entering block: F1 | HHO
+[2026-03-13 10:20:59] DONE: F1 | HHO | run 1 | best=8.312919e+06 | time=1.043s
+[2026-03-13 10:21:00] DONE: F1 | HHO | run 2 | best=5.838844e+06 | time=0.900s
+[2026-03-13 10:21:01] DONE: F1 | HHO | run 3 | best=1.465973e+07 | time=0.904s
+[2026-03-13 10:21:02] DONE: F1 | HHO | run 4 | best=1.319758e+07 | time=0.907s
+[2026-03-13 10:21:03] DONE: F1 | HHO | run 5 | best=1.386154e+07 | time=0.906s
+[2026-03-13 10:21:04] DONE: F1 | HHO | run 6 | best=1.388061e+07 | time=0.900s
+[2026-03-13 10:21:05] DONE: F1 | HHO | run 7 | best=1.489673e+07 | time=0.919s
+[2026-03-13 10:21:06] DONE: F1 | HHO | run 8 | best=1.822643e+07 | time=0.900s
+[2026-03-13 10:21:07] DONE: F1 | HHO | run 9 | best=1.159359e+07 | time=0.897s
+[2026-03-13 10:21:07] DONE: F1 | HHO | run 10 | best=1.575187e+07 | time=0.904s
+[2026-03-13 10:21:08] Block finished: F1 | HHO | done=10 | failed=0
+[2026-03-13 10:21:08] Entering block: F1 | FAEAE
+[2026-03-13 10:21:14] DONE: F1 | FAEAE | run 1 | best=8.825399e+07 | time=6.585s
+[2026-03-13 10:21:21] DONE: F1 | FAEAE | run 2 | best=1.017429e+08 | time=6.545s
+[2026-03-13 10:21:27] DONE: F1 | FAEAE | run 3 | best=9.604150e+07 | time=6.524s
+[2026-03-13 10:21:34] DONE: F1 | FAEAE | run 4 | best=9.107389e+07 | time=6.551s
+[2026-03-13 10:21:41] DONE: F1 | FAEAE | run 5 | best=7.431961e+07 | time=6.534s
+[2026-03-13 10:21:47] DONE: F1 | FAEAE | run 6 | best=1.071419e+08 | time=6.518s
+[2026-03-13 10:21:54] DONE: F1 | FAEAE | run 7 | best=1.065230e+08 | time=6.512s
+[2026-03-13 10:22:00] DONE: F1 | FAEAE | run 8 | best=1.004357e+08 | time=6.560s
+[2026-03-13 10:22:07] DONE: F1 | FAEAE | run 9 | best=9.212539e+07 | time=6.522s
+[2026-03-13 10:22:14] DONE: F1 | FAEAE | run 10 | best=9.731937e+07 | time=6.493s
+[2026-03-13 10:22:14] Block finished: F1 | FAEAE | done=10 | failed=0
+[2026-03-13 10:22:14] Entering block: F3 | AE
+[2026-03-13 10:22:19] DONE: F3 | AE | run 1 | best=3.150483e+02 | time=5.830s
+[2026-03-13 10:22:25] DONE: F3 | AE | run 2 | best=3.188975e+02 | time=5.846s
+[2026-03-13 10:22:32] DONE: F3 | AE | run 3 | best=3.162093e+02 | time=6.022s
+[2026-03-13 10:22:37] DONE: F3 | AE | run 4 | best=3.193881e+02 | time=5.870s
+[2026-03-13 10:22:43] DONE: F3 | AE | run 5 | best=3.157533e+02 | time=5.881s
+[2026-03-13 10:22:49] DONE: F3 | AE | run 6 | best=3.152329e+02 | time=5.826s
+[2026-03-13 10:22:55] DONE: F3 | AE | run 7 | best=3.185231e+02 | time=5.837s
+[2026-03-13 10:23:01] DONE: F3 | AE | run 8 | best=3.171597e+02 | time=5.829s
+[2026-03-13 10:23:07] DONE: F3 | AE | run 9 | best=3.161194e+02 | time=5.830s
+[2026-03-13 10:23:13] DONE: F3 | AE | run 10 | best=3.156637e+02 | time=5.839s
+[2026-03-13 10:23:13] Block finished: F3 | AE | done=10 | failed=0
+[2026-03-13 10:23:13] Entering block: F3 | DE
+[2026-03-13 10:23:14] DONE: F3 | DE | run 1 | best=7.498772e+02 | time=1.426s
+[2026-03-13 10:23:16] DONE: F3 | DE | run 2 | best=5.054635e+02 | time=1.423s
+[2026-03-13 10:23:17] DONE: F3 | DE | run 3 | best=3.000003e+02 | time=1.412s
+[2026-03-13 10:23:19] DONE: F3 | DE | run 4 | best=1.156818e+03 | time=1.410s
+[2026-03-13 10:23:21] DONE: F3 | DE | run 5 | best=3.000167e+02 | time=1.429s
+[2026-03-13 10:23:22] DONE: F3 | DE | run 6 | best=3.000001e+02 | time=1.414s
+[2026-03-13 10:23:24] DONE: F3 | DE | run 7 | best=3.000000e+02 | time=1.410s
+[2026-03-13 10:23:25] DONE: F3 | DE | run 8 | best=3.034844e+02 | time=1.432s
+[2026-03-13 10:23:27] DONE: F3 | DE | run 9 | best=3.003507e+02 | time=1.414s
+[2026-03-13 10:23:28] DONE: F3 | DE | run 10 | best=3.000000e+02 | time=1.415s
+[2026-03-13 10:23:28] Block finished: F3 | DE | done=10 | failed=0
+[2026-03-13 10:23:28] Entering block: F3 | PSO
+[2026-03-13 10:23:29] DONE: F3 | PSO | run 1 | best=3.000000e+02 | time=0.917s
+[2026-03-13 10:23:30] DONE: F3 | PSO | run 2 | best=3.000000e+02 | time=0.910s
+[2026-03-13 10:23:31] DONE: F3 | PSO | run 3 | best=3.000000e+02 | time=0.897s
+[2026-03-13 10:23:32] DONE: F3 | PSO | run 4 | best=3.000000e+02 | time=0.911s
+[2026-03-13 10:23:33] DONE: F3 | PSO | run 5 | best=3.000000e+02 | time=0.907s
+[2026-03-13 10:23:34] DONE: F3 | PSO | run 6 | best=3.000000e+02 | time=0.910s
+[2026-03-13 10:23:35] DONE: F3 | PSO | run 7 | best=3.000000e+02 | time=0.905s
+[2026-03-13 10:23:36] DONE: F3 | PSO | run 8 | best=3.000000e+02 | time=0.904s
+[2026-03-13 10:23:37] DONE: F3 | PSO | run 9 | best=3.000000e+02 | time=0.910s
+[2026-03-13 10:23:38] DONE: F3 | PSO | run 10 | best=3.000000e+02 | time=0.910s
+[2026-03-13 10:23:38] Block finished: F3 | PSO | done=10 | failed=0
+[2026-03-13 10:23:38] Entering block: F3 | GWO
+[2026-03-13 10:23:39] DONE: F3 | GWO | run 1 | best=9.179769e+04 | time=1.264s
+[2026-03-13 10:23:41] DONE: F3 | GWO | run 2 | best=9.290523e+04 | time=1.255s
+[2026-03-13 10:23:42] DONE: F3 | GWO | run 3 | best=8.683825e+04 | time=1.255s
+[2026-03-13 10:23:44] DONE: F3 | GWO | run 4 | best=9.335763e+04 | time=1.249s
+[2026-03-13 10:23:45] DONE: F3 | GWO | run 5 | best=9.496770e+04 | time=1.246s
+[2026-03-13 10:23:46] DONE: F3 | GWO | run 6 | best=9.538162e+04 | time=1.267s
+[2026-03-13 10:23:48] DONE: F3 | GWO | run 7 | best=9.202209e+04 | time=1.244s
+[2026-03-13 10:23:49] DONE: F3 | GWO | run 8 | best=9.243173e+04 | time=1.246s
+[2026-03-13 10:23:50] DONE: F3 | GWO | run 9 | best=9.243173e+04 | time=1.250s
+[2026-03-13 10:23:52] DONE: F3 | GWO | run 10 | best=9.290523e+04 | time=1.246s
+[2026-03-13 10:23:52] Block finished: F3 | GWO | done=10 | failed=0
+[2026-03-13 10:23:52] Entering block: F3 | HHO
+[2026-03-13 10:23:53] DONE: F3 | HHO | run 1 | best=8.807906e+03 | time=1.116s
+[2026-03-13 10:23:54] DONE: F3 | HHO | run 2 | best=8.544115e+03 | time=1.114s
+[2026-03-13 10:23:55] DONE: F3 | HHO | run 3 | best=9.114105e+03 | time=1.117s
+[2026-03-13 10:23:57] DONE: F3 | HHO | run 4 | best=8.458759e+03 | time=1.106s
+[2026-03-13 10:23:58] DONE: F3 | HHO | run 5 | best=8.326309e+03 | time=1.145s
+[2026-03-13 10:23:59] DONE: F3 | HHO | run 6 | best=6.007498e+03 | time=1.108s
+[2026-03-13 10:24:00] DONE: F3 | HHO | run 7 | best=5.170993e+03 | time=1.112s
+[2026-03-13 10:24:02] DONE: F3 | HHO | run 8 | best=8.841011e+03 | time=1.119s
+[2026-03-13 10:24:03] DONE: F3 | HHO | run 9 | best=5.059237e+03 | time=1.104s
+[2026-03-13 10:24:04] DONE: F3 | HHO | run 10 | best=4.536215e+03 | time=1.111s
+[2026-03-13 10:24:04] Block finished: F3 | HHO | done=10 | failed=0
+[2026-03-13 10:24:04] Entering block: F3 | FAEAE
+[2026-03-13 10:24:11] DONE: F3 | FAEAE | run 1 | best=5.659005e+02 | time=6.749s
+[2026-03-13 10:24:18] DONE: F3 | FAEAE | run 2 | best=4.847461e+02 | time=6.816s
+[2026-03-13 10:24:25] DONE: F3 | FAEAE | run 3 | best=4.945339e+02 | time=6.753s
+[2026-03-13 10:24:32] DONE: F3 | FAEAE | run 4 | best=5.403096e+02 | time=6.739s
+[2026-03-13 10:24:39] DONE: F3 | FAEAE | run 5 | best=5.318459e+02 | time=6.776s
+[2026-03-13 10:24:45] DONE: F3 | FAEAE | run 6 | best=5.174272e+02 | time=6.718s
+[2026-03-13 10:24:52] DONE: F3 | FAEAE | run 7 | best=5.108703e+02 | time=6.816s
+[2026-03-13 10:24:59] DONE: F3 | FAEAE | run 8 | best=5.193748e+02 | time=6.786s
+[2026-03-13 10:25:06] DONE: F3 | FAEAE | run 9 | best=5.174070e+02 | time=6.807s
+[2026-03-13 10:25:13] DONE: F3 | FAEAE | run 10 | best=5.018518e+02 | time=6.751s
+[2026-03-13 10:25:13] Block finished: F3 | FAEAE | done=10 | failed=0
+[2026-03-13 10:25:13] Entering block: F4 | AE
+[2026-03-13 10:25:19] DONE: F4 | AE | run 1 | best=5.138896e+02 | time=5.609s
+[2026-03-13 10:25:25] DONE: F4 | AE | run 2 | best=4.056228e+02 | time=5.666s
+[2026-03-13 10:25:30] DONE: F4 | AE | run 3 | best=5.119107e+02 | time=5.598s
+[2026-03-13 10:25:36] DONE: F4 | AE | run 4 | best=5.105780e+02 | time=5.601s
+[2026-03-13 10:25:42] DONE: F4 | AE | run 5 | best=4.719641e+02 | time=5.670s
+[2026-03-13 10:25:48] DONE: F4 | AE | run 6 | best=5.065053e+02 | time=5.624s
+[2026-03-13 10:25:53] DONE: F4 | AE | run 7 | best=4.739742e+02 | time=5.605s
+[2026-03-13 10:25:59] DONE: F4 | AE | run 8 | best=4.743615e+02 | time=5.595s
+[2026-03-13 10:26:05] DONE: F4 | AE | run 9 | best=5.093931e+02 | time=5.629s
+[2026-03-13 10:26:11] DONE: F4 | AE | run 10 | best=4.740058e+02 | time=5.605s
+[2026-03-13 10:26:11] Block finished: F4 | AE | done=10 | failed=0
+[2026-03-13 10:26:11] Entering block: F4 | DE
+[2026-03-13 10:26:12] DONE: F4 | DE | run 1 | best=5.012645e+02 | time=1.229s
+[2026-03-13 10:26:13] DONE: F4 | DE | run 2 | best=4.672163e+02 | time=1.223s
+[2026-03-13 10:26:15] DONE: F4 | DE | run 3 | best=4.028621e+02 | time=1.229s
+[2026-03-13 10:26:16] DONE: F4 | DE | run 4 | best=4.691653e+02 | time=1.227s
+[2026-03-13 10:26:17] DONE: F4 | DE | run 5 | best=5.076947e+02 | time=1.225s
+[2026-03-13 10:26:19] DONE: F4 | DE | run 6 | best=4.893894e+02 | time=1.223s
+[2026-03-13 10:26:20] DONE: F4 | DE | run 7 | best=4.048809e+02 | time=1.222s
+[2026-03-13 10:26:22] DONE: F4 | DE | run 8 | best=4.878048e+02 | time=1.231s
+[2026-03-13 10:26:23] DONE: F4 | DE | run 9 | best=4.719730e+02 | time=1.233s
+[2026-03-13 10:26:24] DONE: F4 | DE | run 10 | best=4.915511e+02 | time=1.235s
+[2026-03-13 10:26:24] Block finished: F4 | DE | done=10 | failed=0
+[2026-03-13 10:26:24] Entering block: F4 | PSO
+[2026-03-13 10:26:25] DONE: F4 | PSO | run 1 | best=4.750296e+02 | time=0.749s
+[2026-03-13 10:26:26] DONE: F4 | PSO | run 2 | best=9.744935e+02 | time=0.793s
+[2026-03-13 10:26:27] DONE: F4 | PSO | run 3 | best=4.641174e+02 | time=0.769s
+[2026-03-13 10:26:28] DONE: F4 | PSO | run 4 | best=5.140496e+02 | time=0.771s
+[2026-03-13 10:26:29] DONE: F4 | PSO | run 5 | best=4.933481e+02 | time=0.757s
+[2026-03-13 10:26:30] DONE: F4 | PSO | run 6 | best=5.854030e+02 | time=0.768s
+[2026-03-13 10:26:31] DONE: F4 | PSO | run 7 | best=5.785231e+02 | time=0.767s
+[2026-03-13 10:26:32] DONE: F4 | PSO | run 8 | best=5.182814e+02 | time=0.743s
+[2026-03-13 10:26:33] DONE: F4 | PSO | run 9 | best=1.041621e+03 | time=0.773s
+[2026-03-13 10:26:33] DONE: F4 | PSO | run 10 | best=5.736311e+02 | time=0.773s
+[2026-03-13 10:26:34] Block finished: F4 | PSO | done=10 | failed=0
+[2026-03-13 10:26:34] Entering block: F4 | GWO
+[2026-03-13 10:26:35] DONE: F4 | GWO | run 1 | best=1.433831e+03 | time=1.077s
+[2026-03-13 10:26:36] DONE: F4 | GWO | run 2 | best=8.663460e+02 | time=1.070s
+[2026-03-13 10:26:37] DONE: F4 | GWO | run 3 | best=1.110443e+03 | time=1.075s
+[2026-03-13 10:26:38] DONE: F4 | GWO | run 4 | best=1.230760e+03 | time=1.072s
+[2026-03-13 10:26:40] DONE: F4 | GWO | run 5 | best=1.307718e+03 | time=1.066s
+[2026-03-13 10:26:41] DONE: F4 | GWO | run 6 | best=1.433831e+03 | time=1.069s
+[2026-03-13 10:26:42] DONE: F4 | GWO | run 7 | best=1.230763e+03 | time=1.069s
+[2026-03-13 10:26:43] DONE: F4 | GWO | run 8 | best=1.110445e+03 | time=1.061s
+[2026-03-13 10:26:45] DONE: F4 | GWO | run 9 | best=8.930960e+02 | time=1.069s
+[2026-03-13 10:26:46] DONE: F4 | GWO | run 10 | best=1.433831e+03 | time=1.082s
+[2026-03-13 10:26:46] Block finished: F4 | GWO | done=10 | failed=0
+[2026-03-13 10:26:46] Entering block: F4 | HHO
+[2026-03-13 10:26:47] DONE: F4 | HHO | run 1 | best=5.172344e+02 | time=0.893s
+[2026-03-13 10:26:48] DONE: F4 | HHO | run 2 | best=4.934226e+02 | time=0.896s
+[2026-03-13 10:26:49] DONE: F4 | HHO | run 3 | best=4.964014e+02 | time=0.893s
+[2026-03-13 10:26:50] DONE: F4 | HHO | run 4 | best=5.869261e+02 | time=0.890s
+[2026-03-13 10:26:51] DONE: F4 | HHO | run 5 | best=5.152636e+02 | time=0.887s
+[2026-03-13 10:26:52] DONE: F4 | HHO | run 6 | best=4.981621e+02 | time=0.892s
+[2026-03-13 10:26:53] DONE: F4 | HHO | run 7 | best=5.438080e+02 | time=0.886s
+[2026-03-13 10:26:54] DONE: F4 | HHO | run 8 | best=5.141625e+02 | time=0.893s
+[2026-03-13 10:26:56] DONE: F4 | HHO | run 9 | best=5.221629e+02 | time=0.887s
+[2026-03-13 10:26:57] DONE: F4 | HHO | run 10 | best=5.214203e+02 | time=0.893s
+[2026-03-13 10:26:57] Block finished: F4 | HHO | done=10 | failed=0
+[2026-03-13 10:26:57] Entering block: F4 | FAEAE
+[2026-03-13 10:27:03] DONE: F4 | FAEAE | run 1 | best=5.199365e+02 | time=6.597s
+[2026-03-13 10:27:10] DONE: F4 | FAEAE | run 2 | best=5.195702e+02 | time=6.517s
+[2026-03-13 10:27:17] DONE: F4 | FAEAE | run 3 | best=5.199000e+02 | time=6.471s
+[2026-03-13 10:27:23] DONE: F4 | FAEAE | run 4 | best=5.221726e+02 | time=6.515s
+[2026-03-13 10:27:30] DONE: F4 | FAEAE | run 5 | best=4.814954e+02 | time=6.513s
+[2026-03-13 10:27:37] DONE: F4 | FAEAE | run 6 | best=5.221108e+02 | time=6.496s
+[2026-03-13 10:27:43] DONE: F4 | FAEAE | run 7 | best=5.223482e+02 | time=6.451s
+[2026-03-13 10:27:50] DONE: F4 | FAEAE | run 8 | best=4.849464e+02 | time=6.487s
+[2026-03-13 10:27:57] DONE: F4 | FAEAE | run 9 | best=5.234580e+02 | time=6.507s
+[2026-03-13 10:28:04] DONE: F4 | FAEAE | run 10 | best=4.804381e+02 | time=6.511s
+[2026-03-13 10:28:04] Block finished: F4 | FAEAE | done=10 | failed=0
+[2026-03-13 10:28:04] Entering block: F5 | AE
+[2026-03-13 10:28:09] DONE: F5 | AE | run 1 | best=6.779085e+02 | time=5.741s
+[2026-03-13 10:28:15] DONE: F5 | AE | run 2 | best=6.771388e+02 | time=5.734s
+[2026-03-13 10:28:21] DONE: F5 | AE | run 3 | best=6.352100e+02 | time=5.729s
+[2026-03-13 10:28:27] DONE: F5 | AE | run 4 | best=6.832685e+02 | time=5.740s
+[2026-03-13 10:28:33] DONE: F5 | AE | run 5 | best=6.449468e+02 | time=5.718s
+[2026-03-13 10:28:39] DONE: F5 | AE | run 6 | best=6.558425e+02 | time=5.711s
+[2026-03-13 10:28:45] DONE: F5 | AE | run 7 | best=6.778120e+02 | time=5.734s
+[2026-03-13 10:28:51] DONE: F5 | AE | run 8 | best=7.136731e+02 | time=5.724s
+[2026-03-13 10:28:57] DONE: F5 | AE | run 9 | best=6.422950e+02 | time=5.737s
+[2026-03-13 10:29:03] DONE: F5 | AE | run 10 | best=6.974191e+02 | time=5.751s
+[2026-03-13 10:29:03] Block finished: F5 | AE | done=10 | failed=0
+[2026-03-13 10:29:03] Entering block: F5 | DE
+[2026-03-13 10:29:04] DONE: F5 | DE | run 1 | best=5.326510e+02 | time=1.262s
+[2026-03-13 10:29:06] DONE: F5 | DE | run 2 | best=5.319411e+02 | time=1.270s
+[2026-03-13 10:29:07] DONE: F5 | DE | run 3 | best=5.278714e+02 | time=1.266s
+[2026-03-13 10:29:09] DONE: F5 | DE | run 4 | best=5.445573e+02 | time=1.273s
+[2026-03-13 10:29:10] DONE: F5 | DE | run 5 | best=5.298487e+02 | time=1.261s
+[2026-03-13 10:29:11] DONE: F5 | DE | run 6 | best=5.260692e+02 | time=1.267s
+[2026-03-13 10:29:13] DONE: F5 | DE | run 7 | best=5.308455e+02 | time=1.278s
+[2026-03-13 10:29:14] DONE: F5 | DE | run 8 | best=5.666119e+02 | time=1.319s
+[2026-03-13 10:29:16] DONE: F5 | DE | run 9 | best=5.467846e+02 | time=1.270s
+[2026-03-13 10:29:17] DONE: F5 | DE | run 10 | best=5.497509e+02 | time=1.272s
+[2026-03-13 10:29:18] Block finished: F5 | DE | done=10 | failed=0
+[2026-03-13 10:29:18] Entering block: F5 | PSO
+[2026-03-13 10:29:18] DONE: F5 | PSO | run 1 | best=6.212588e+02 | time=0.777s
+[2026-03-13 10:29:19] DONE: F5 | PSO | run 2 | best=6.263593e+02 | time=0.762s
+[2026-03-13 10:29:20] DONE: F5 | PSO | run 3 | best=6.830714e+02 | time=0.767s
+[2026-03-13 10:29:21] DONE: F5 | PSO | run 4 | best=6.124301e+02 | time=0.780s
+[2026-03-13 10:29:22] DONE: F5 | PSO | run 5 | best=6.183996e+02 | time=0.763s
+[2026-03-13 10:29:23] DONE: F5 | PSO | run 6 | best=6.253643e+02 | time=0.768s
+[2026-03-13 10:29:24] DONE: F5 | PSO | run 7 | best=5.654239e+02 | time=0.783s
+[2026-03-13 10:29:25] DONE: F5 | PSO | run 8 | best=5.596975e+02 | time=0.757s
+[2026-03-13 10:29:26] DONE: F5 | PSO | run 9 | best=6.741168e+02 | time=0.756s
+[2026-03-13 10:29:27] DONE: F5 | PSO | run 10 | best=6.163872e+02 | time=0.784s
+[2026-03-13 10:29:27] Block finished: F5 | PSO | done=10 | failed=0
+[2026-03-13 10:29:27] Entering block: F5 | GWO
+[2026-03-13 10:29:28] DONE: F5 | GWO | run 1 | best=8.686241e+02 | time=1.145s
+[2026-03-13 10:29:30] DONE: F5 | GWO | run 2 | best=8.419307e+02 | time=1.144s
+[2026-03-13 10:29:31] DONE: F5 | GWO | run 3 | best=8.319865e+02 | time=1.135s
+[2026-03-13 10:29:33] DONE: F5 | GWO | run 4 | best=8.314418e+02 | time=1.146s
+[2026-03-13 10:29:34] DONE: F5 | GWO | run 5 | best=8.066086e+02 | time=1.146s
+[2026-03-13 10:29:35] DONE: F5 | GWO | run 6 | best=7.938797e+02 | time=1.143s
+[2026-03-13 10:29:37] DONE: F5 | GWO | run 7 | best=8.263619e+02 | time=1.150s
+[2026-03-13 10:29:38] DONE: F5 | GWO | run 8 | best=7.908533e+02 | time=1.146s
+[2026-03-13 10:29:39] DONE: F5 | GWO | run 9 | best=8.153005e+02 | time=1.148s
+[2026-03-13 10:29:41] DONE: F5 | GWO | run 10 | best=8.462244e+02 | time=1.157s
+[2026-03-13 10:29:41] Block finished: F5 | GWO | done=10 | failed=0
+[2026-03-13 10:29:41] Entering block: F5 | HHO
+[2026-03-13 10:29:42] DONE: F5 | HHO | run 1 | best=7.071185e+02 | time=0.975s
+[2026-03-13 10:29:43] DONE: F5 | HHO | run 2 | best=6.838414e+02 | time=0.980s
+[2026-03-13 10:29:44] DONE: F5 | HHO | run 3 | best=6.339242e+02 | time=0.977s
+[2026-03-13 10:29:46] DONE: F5 | HHO | run 4 | best=6.216692e+02 | time=0.987s
+[2026-03-13 10:29:47] DONE: F5 | HHO | run 5 | best=6.458423e+02 | time=0.967s
+[2026-03-13 10:29:48] DONE: F5 | HHO | run 6 | best=6.565605e+02 | time=0.972s
+[2026-03-13 10:29:49] DONE: F5 | HHO | run 7 | best=7.308432e+02 | time=0.976s
+[2026-03-13 10:29:50] DONE: F5 | HHO | run 8 | best=6.251867e+02 | time=0.970s
+[2026-03-13 10:29:52] DONE: F5 | HHO | run 9 | best=6.513367e+02 | time=0.993s
+[2026-03-13 10:29:53] DONE: F5 | HHO | run 10 | best=6.518447e+02 | time=0.975s
+[2026-03-13 10:29:53] Block finished: F5 | HHO | done=10 | failed=0
+[2026-03-13 10:29:53] Entering block: F5 | FAEAE
+[2026-03-13 10:30:00] DONE: F5 | FAEAE | run 1 | best=6.029740e+02 | time=6.541s
+[2026-03-13 10:30:06] DONE: F5 | FAEAE | run 2 | best=5.982550e+02 | time=6.563s
+[2026-03-13 10:30:13] DONE: F5 | FAEAE | run 3 | best=6.184540e+02 | time=6.612s
+[2026-03-13 10:30:20] DONE: F5 | FAEAE | run 4 | best=6.202678e+02 | time=6.543s
+[2026-03-13 10:30:27] DONE: F5 | FAEAE | run 5 | best=5.929769e+02 | time=6.585s
+[2026-03-13 10:30:34] DONE: F5 | FAEAE | run 6 | best=6.286947e+02 | time=6.563s
+[2026-03-13 10:30:40] DONE: F5 | FAEAE | run 7 | best=6.369891e+02 | time=6.617s
+[2026-03-13 10:30:47] DONE: F5 | FAEAE | run 8 | best=6.088825e+02 | time=6.591s
+[2026-03-13 10:30:54] DONE: F5 | FAEAE | run 9 | best=6.047767e+02 | time=6.580s
+[2026-03-13 10:31:01] DONE: F5 | FAEAE | run 10 | best=6.158930e+02 | time=6.665s
+[2026-03-13 10:31:01] Block finished: F5 | FAEAE | done=10 | failed=0
+[2026-03-13 10:31:01] Entering block: F6 | AE
+[2026-03-13 10:31:08] DONE: F6 | AE | run 1 | best=6.548324e+02 | time=6.704s
+[2026-03-13 10:31:15] DONE: F6 | AE | run 2 | best=6.451242e+02 | time=6.692s
+[2026-03-13 10:31:22] DONE: F6 | AE | run 3 | best=6.566160e+02 | time=6.881s
+[2026-03-13 10:31:29] DONE: F6 | AE | run 4 | best=6.449064e+02 | time=6.698s
+[2026-03-13 10:31:36] DONE: F6 | AE | run 5 | best=6.568061e+02 | time=6.737s
+[2026-03-13 10:31:43] DONE: F6 | AE | run 6 | best=6.579584e+02 | time=6.713s
+[2026-03-13 10:31:50] DONE: F6 | AE | run 7 | best=6.429694e+02 | time=6.713s
+[2026-03-13 10:31:57] DONE: F6 | AE | run 8 | best=6.406155e+02 | time=6.670s
+[2026-03-13 10:32:04] DONE: F6 | AE | run 9 | best=6.565363e+02 | time=6.696s
+[2026-03-13 10:32:11] DONE: F6 | AE | run 10 | best=6.529987e+02 | time=6.666s
+[2026-03-13 10:32:11] Block finished: F6 | AE | done=10 | failed=0
+[2026-03-13 10:32:11] Entering block: F6 | DE
+[2026-03-13 10:32:13] DONE: F6 | DE | run 1 | best=6.000034e+02 | time=1.993s
+[2026-03-13 10:32:15] DONE: F6 | DE | run 2 | best=6.000514e+02 | time=1.990s
+[2026-03-13 10:32:17] DONE: F6 | DE | run 3 | best=6.002870e+02 | time=2.030s
+[2026-03-13 10:32:20] DONE: F6 | DE | run 4 | best=6.001040e+02 | time=1.983s
+[2026-03-13 10:32:22] DONE: F6 | DE | run 5 | best=6.002220e+02 | time=1.976s
+[2026-03-13 10:32:24] DONE: F6 | DE | run 6 | best=6.000281e+02 | time=1.959s
+[2026-03-13 10:32:26] DONE: F6 | DE | run 7 | best=6.000410e+02 | time=1.992s
+[2026-03-13 10:32:28] DONE: F6 | DE | run 8 | best=6.001356e+02 | time=2.026s
+[2026-03-13 10:32:31] DONE: F6 | DE | run 9 | best=6.001270e+02 | time=1.969s
+[2026-03-13 10:32:33] DONE: F6 | DE | run 10 | best=6.000459e+02 | time=1.978s
+[2026-03-13 10:32:33] Block finished: F6 | DE | done=10 | failed=0
+[2026-03-13 10:32:33] Entering block: F6 | PSO
+[2026-03-13 10:32:35] DONE: F6 | PSO | run 1 | best=6.076622e+02 | time=1.673s
+[2026-03-13 10:32:37] DONE: F6 | PSO | run 2 | best=6.177736e+02 | time=1.622s
+[2026-03-13 10:32:39] DONE: F6 | PSO | run 3 | best=6.056850e+02 | time=1.630s
+[2026-03-13 10:32:40] DONE: F6 | PSO | run 4 | best=6.183805e+02 | time=1.654s
+[2026-03-13 10:32:42] DONE: F6 | PSO | run 5 | best=6.194535e+02 | time=1.689s
+[2026-03-13 10:32:44] DONE: F6 | PSO | run 6 | best=6.231885e+02 | time=1.645s
+[2026-03-13 10:32:46] DONE: F6 | PSO | run 7 | best=6.292472e+02 | time=1.654s
+[2026-03-13 10:32:48] DONE: F6 | PSO | run 8 | best=6.138170e+02 | time=1.618s
+[2026-03-13 10:32:50] DONE: F6 | PSO | run 9 | best=6.278194e+02 | time=1.639s
+[2026-03-13 10:32:52] DONE: F6 | PSO | run 10 | best=6.304444e+02 | time=1.654s
+[2026-03-13 10:32:52] Block finished: F6 | PSO | done=10 | failed=0
+[2026-03-13 10:32:52] Entering block: F6 | GWO
+[2026-03-13 10:32:54] DONE: F6 | GWO | run 1 | best=6.451903e+02 | time=2.071s
+[2026-03-13 10:32:57] DONE: F6 | GWO | run 2 | best=6.535375e+02 | time=2.061s
+[2026-03-13 10:32:59] DONE: F6 | GWO | run 3 | best=6.442838e+02 | time=2.065s
+[2026-03-13 10:33:01] DONE: F6 | GWO | run 4 | best=6.513306e+02 | time=2.052s
+[2026-03-13 10:33:04] DONE: F6 | GWO | run 5 | best=6.474928e+02 | time=2.053s
+[2026-03-13 10:33:06] DONE: F6 | GWO | run 6 | best=6.573203e+02 | time=2.074s
+[2026-03-13 10:33:08] DONE: F6 | GWO | run 7 | best=6.582600e+02 | time=2.071s
+[2026-03-13 10:33:11] DONE: F6 | GWO | run 8 | best=6.406017e+02 | time=2.083s
+[2026-03-13 10:33:13] DONE: F6 | GWO | run 9 | best=6.601429e+02 | time=2.178s
+[2026-03-13 10:33:16] DONE: F6 | GWO | run 10 | best=6.510088e+02 | time=2.179s
+[2026-03-13 10:33:16] Block finished: F6 | GWO | done=10 | failed=0
+[2026-03-13 10:33:16] Entering block: F6 | HHO
+[2026-03-13 10:33:18] DONE: F6 | HHO | run 1 | best=6.194977e+02 | time=1.944s
+[2026-03-13 10:33:20] DONE: F6 | HHO | run 2 | best=6.428994e+02 | time=1.934s
+[2026-03-13 10:33:22] DONE: F6 | HHO | run 3 | best=6.340192e+02 | time=1.929s
+[2026-03-13 10:33:24] DONE: F6 | HHO | run 4 | best=6.197882e+02 | time=1.934s
+[2026-03-13 10:33:27] DONE: F6 | HHO | run 5 | best=6.232299e+02 | time=1.933s
+[2026-03-13 10:33:29] DONE: F6 | HHO | run 6 | best=6.424553e+02 | time=1.926s
+[2026-03-13 10:33:31] DONE: F6 | HHO | run 7 | best=6.278937e+02 | time=1.922s
+[2026-03-13 10:33:33] DONE: F6 | HHO | run 8 | best=6.283369e+02 | time=1.930s
+[2026-03-13 10:33:36] DONE: F6 | HHO | run 9 | best=6.282513e+02 | time=1.932s
+[2026-03-13 10:33:38] DONE: F6 | HHO | run 10 | best=6.223699e+02 | time=1.919s
+[2026-03-13 10:33:38] Block finished: F6 | HHO | done=10 | failed=0
+[2026-03-13 10:33:38] Entering block: F6 | FAEAE
+[2026-03-13 10:33:46] DONE: F6 | FAEAE | run 1 | best=6.048242e+02 | time=7.601s
+[2026-03-13 10:33:54] DONE: F6 | FAEAE | run 2 | best=6.035860e+02 | time=7.775s
+[2026-03-13 10:34:02] DONE: F6 | FAEAE | run 3 | best=6.040341e+02 | time=7.663s
+[2026-03-13 10:34:09] DONE: F6 | FAEAE | run 4 | best=6.046827e+02 | time=7.580s
+[2026-03-13 10:34:18] DONE: F6 | FAEAE | run 5 | best=6.048887e+02 | time=7.720s
+[2026-03-13 10:34:25] DONE: F6 | FAEAE | run 6 | best=6.038221e+02 | time=7.600s
+[2026-03-13 10:34:33] DONE: F6 | FAEAE | run 7 | best=6.049903e+02 | time=7.595s
+[2026-03-13 10:34:41] DONE: F6 | FAEAE | run 8 | best=6.040247e+02 | time=7.631s
+[2026-03-13 10:34:49] DONE: F6 | FAEAE | run 9 | best=6.048932e+02 | time=7.590s
+[2026-03-13 10:34:57] DONE: F6 | FAEAE | run 10 | best=6.039998e+02 | time=7.613s
+[2026-03-13 10:34:57] Block finished: F6 | FAEAE | done=10 | failed=0
+[2026-03-13 10:34:57] Batch finished | done=300 | failed=0 | pending=0 | elapsed=929.41s

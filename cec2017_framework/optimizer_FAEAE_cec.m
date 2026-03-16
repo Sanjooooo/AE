@@ -1,4 +1,4 @@
-function result = optimizer_FAEAE_cec(funHandle, lb, ub, dim, maxFEs, runSeed)
+function result = optimizer_FAEAE_cec(funHandle, lb, ub, dim, algCfg, runSeed)
 %OPTIMIZER_FAEAE_CEC FAE-AE for CEC2017 continuous optimization.
 %
 % Revised version:
@@ -6,12 +6,20 @@ function result = optimizer_FAEAE_cec(funHandle, lb, ub, dim, maxFEs, runSeed)
 % 2) softer local refinement
 % 3) more conservative regeneration
 % 4) more stable operator balance for single-peak functions
+%
+% Output (standardized):
+%   result.bestFitness
+%   result.bestPosition
+%   result.convergence
+%   result.runtime
+%   result.nFEs
 
-rng(runSeed);
+rng(runSeed, 'twister');
 
 % ---------- Parameters ----------
-popSize = 30;
-maxIter = ceil(maxFEs / popSize);
+popSize = algCfg.popSize;
+maxFEs = algCfg.maxFEs;
+maxIter = algCfg.maxIter;
 
 nOps = 3;
 ucbC = 0.75;
@@ -90,7 +98,7 @@ for t = 1:maxIter
 
         switch opIdx
             case 1
-                % Global exploration (softer than previous version)
+                % Global exploration
                 a1 = 0.18 + 0.18 * (1 - tau);
                 a2 = 0.10 + 0.12 * (1 - tau);
                 a3 = 0.40 + 0.15 * (1 - tau);
@@ -105,7 +113,7 @@ for t = 1:maxIter
                     a5 * rho * randVec1 .* (ub - lb);
 
             case 2
-                % Balanced search (main operator)
+                % Balanced search
                 a1 = 0.30 + 0.10 * (1 - tau);
                 a2 = 0.24 + 0.10 * tau;
                 a3 = 0.14 + 0.05 * (1 - tau);
@@ -120,7 +128,7 @@ for t = 1:maxIter
                     a5 * rho * randVec2 .* (ub - lb);
 
             case 3
-                % Local exploitation (more conservative)
+                % Local exploitation
                 localScale = 0.05 + 0.10 * (1 - tau)^0.8;
 
                 a1 = 0.38 + 0.15 * tau;
@@ -236,11 +244,13 @@ end
 
 runTime = toc(tStart);
 
-result.bestFit = bestFit;
-result.bestX = bestX;
-result.convergence = convergence;
-result.FEsUsed = FEs;
-result.runTime = runTime;
+% ---------- Standardized output ----------
+result = struct();
+result.bestFitness = bestFit;
+result.bestPosition = bestX(:);
+result.convergence = convergence(:);
+result.runtime = runTime;
+result.nFEs = FEs;
 end
 
 

@@ -1,0 +1,62 @@
+[2026-03-13 10:57:55] Starting new batch: F:\MATLAB_Project\FAEAE_matlab\results_cec2017_smoke_woa\cec2017_batch_results.mat
+[2026-03-13 10:57:55] Entering block: F1 | AE
+[2026-03-13 10:57:56] DONE: F1 | AE | run 1 | best=9.776980e+06 | time=0.661s
+[2026-03-13 10:57:56] DONE: F1 | AE | run 2 | best=8.506449e+06 | time=0.581s
+[2026-03-13 10:57:57] DONE: F1 | AE | run 3 | best=1.031513e+07 | time=0.576s
+[2026-03-13 10:57:57] Block finished: F1 | AE | done=3 | failed=0
+[2026-03-13 10:57:57] Entering block: F1 | PSO
+[2026-03-13 10:57:57] DONE: F1 | PSO | run 1 | best=1.026803e+09 | time=0.087s
+[2026-03-13 10:57:57] DONE: F1 | PSO | run 2 | best=2.389511e+03 | time=0.080s
+[2026-03-13 10:57:57] DONE: F1 | PSO | run 3 | best=1.184049e+09 | time=0.076s
+[2026-03-13 10:57:57] Block finished: F1 | PSO | done=3 | failed=0
+[2026-03-13 10:57:57] Entering block: F1 | GWO
+[2026-03-13 10:57:57] DONE: F1 | GWO | run 1 | best=7.304659e+09 | time=0.144s
+[2026-03-13 10:57:57] DONE: F1 | GWO | run 2 | best=3.745079e+09 | time=0.119s
+[2026-03-13 10:57:57] DONE: F1 | GWO | run 3 | best=5.628420e+09 | time=0.123s
+[2026-03-13 10:57:57] Block finished: F1 | GWO | done=3 | failed=0
+[2026-03-13 10:57:57] Entering block: F1 | HHO
+[2026-03-13 10:57:58] DONE: F1 | HHO | run 1 | best=8.859150e+07 | time=0.133s
+[2026-03-13 10:57:58] DONE: F1 | HHO | run 2 | best=1.110115e+08 | time=0.104s
+[2026-03-13 10:57:58] DONE: F1 | HHO | run 3 | best=1.088843e+08 | time=0.118s
+[2026-03-13 10:57:58] Block finished: F1 | HHO | done=3 | failed=0
+[2026-03-13 10:57:58] Entering block: F1 | WOA
+[2026-03-13 10:57:58] DONE: F1 | WOA | run 1 | best=2.124356e+10 | time=0.098s
+[2026-03-13 10:57:58] DONE: F1 | WOA | run 2 | best=1.484632e+10 | time=0.068s
+[2026-03-13 10:57:58] DONE: F1 | WOA | run 3 | best=4.021609e+10 | time=0.069s
+[2026-03-13 10:57:58] Block finished: F1 | WOA | done=3 | failed=0
+[2026-03-13 10:57:58] Entering block: F1 | FAEAE
+[2026-03-13 10:57:59] DONE: F1 | FAEAE | run 1 | best=9.045727e+07 | time=0.980s
+[2026-03-13 10:58:00] DONE: F1 | FAEAE | run 2 | best=1.239700e+08 | time=0.746s
+[2026-03-13 10:58:01] DONE: F1 | FAEAE | run 3 | best=1.098288e+08 | time=0.718s
+[2026-03-13 10:58:01] Block finished: F1 | FAEAE | done=3 | failed=0
+[2026-03-13 10:58:01] Entering block: F3 | AE
+[2026-03-13 10:58:01] DONE: F3 | AE | run 1 | best=3.709594e+04 | time=0.593s
+[2026-03-13 10:58:02] DONE: F3 | AE | run 2 | best=2.829059e+04 | time=0.587s
+[2026-03-13 10:58:02] DONE: F3 | AE | run 3 | best=3.398511e+04 | time=0.627s
+[2026-03-13 10:58:02] Block finished: F3 | AE | done=3 | failed=0
+[2026-03-13 10:58:02] Entering block: F3 | PSO
+[2026-03-13 10:58:03] DONE: F3 | PSO | run 1 | best=3.740415e+04 | time=0.102s
+[2026-03-13 10:58:03] DONE: F3 | PSO | run 2 | best=4.087347e+04 | time=0.100s
+[2026-03-13 10:58:03] DONE: F3 | PSO | run 3 | best=3.517533e+04 | time=0.098s
+[2026-03-13 10:58:03] Block finished: F3 | PSO | done=3 | failed=0
+[2026-03-13 10:58:03] Entering block: F3 | GWO
+[2026-03-13 10:58:03] DONE: F3 | GWO | run 1 | best=8.318836e+04 | time=0.137s
+[2026-03-13 10:58:03] DONE: F3 | GWO | run 2 | best=9.285286e+04 | time=0.137s
+[2026-03-13 10:58:03] DONE: F3 | GWO | run 3 | best=9.078315e+04 | time=0.134s
+[2026-03-13 10:58:03] Block finished: F3 | GWO | done=3 | failed=0
+[2026-03-13 10:58:03] Entering block: F3 | HHO
+[2026-03-13 10:58:03] DONE: F3 | HHO | run 1 | best=6.627879e+04 | time=0.117s
+[2026-03-13 10:58:03] DONE: F3 | HHO | run 2 | best=4.276341e+04 | time=0.118s
+[2026-03-13 10:58:04] DONE: F3 | HHO | run 3 | best=4.660384e+04 | time=0.122s
+[2026-03-13 10:58:04] Block finished: F3 | HHO | done=3 | failed=0
+[2026-03-13 10:58:04] Entering block: F3 | WOA
+[2026-03-13 10:58:04] DONE: F3 | WOA | run 1 | best=2.076039e+05 | time=0.083s
+[2026-03-13 10:58:04] DONE: F3 | WOA | run 2 | best=2.882212e+05 | time=0.085s
+[2026-03-13 10:58:04] DONE: F3 | WOA | run 3 | best=3.499221e+05 | time=0.082s
+[2026-03-13 10:58:04] Block finished: F3 | WOA | done=3 | failed=0
+[2026-03-13 10:58:04] Entering block: F3 | FAEAE
+[2026-03-13 10:58:05] DONE: F3 | FAEAE | run 1 | best=1.400906e+04 | time=0.760s
+[2026-03-13 10:58:05] DONE: F3 | FAEAE | run 2 | best=1.673608e+04 | time=0.770s
+[2026-03-13 10:58:06] DONE: F3 | FAEAE | run 3 | best=1.715062e+04 | time=0.769s
+[2026-03-13 10:58:06] Block finished: F3 | FAEAE | done=3 | failed=0
+[2026-03-13 10:58:06] Batch finished | done=36 | failed=0 | pending=0 | elapsed=11.31s
