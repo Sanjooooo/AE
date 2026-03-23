@@ -1,0 +1,52 @@
+[2026-03-20 20:27:16] Starting new batch: results_cec2017_ablation_smoke\cec_ablation_batch_results.mat
+[2026-03-20 20:27:16] Entering block: F1 | Base-AE
+[2026-03-20 20:27:17] DONE: F1 | Base-AE | run 1 | best=9.776980e+06 | time=0.795s
+[2026-03-20 20:27:18] DONE: F1 | Base-AE | run 2 | best=8.506449e+06 | time=0.625s
+[2026-03-20 20:27:18] DONE: F1 | Base-AE | run 3 | best=1.031513e+07 | time=0.593s
+[2026-03-20 20:27:18] Block finished: F1 | Base-AE | done=3 | failed=0
+[2026-03-20 20:27:18] Entering block: F1 | AE+Init
+[2026-03-20 20:27:19] DONE: F1 | AE+Init | run 1 | best=3.058604e+06 | time=0.641s
+[2026-03-20 20:27:20] DONE: F1 | AE+Init | run 2 | best=1.965520e+06 | time=0.618s
+[2026-03-20 20:27:20] DONE: F1 | AE+Init | run 3 | best=2.921785e+06 | time=0.618s
+[2026-03-20 20:27:20] Block finished: F1 | AE+Init | done=3 | failed=0
+[2026-03-20 20:27:20] Entering block: F1 | AE+Init+AOS
+[2026-03-20 20:27:21] DONE: F1 | AE+Init+AOS | run 1 | best=1.537723e+05 | time=0.764s
+[2026-03-20 20:27:22] DONE: F1 | AE+Init+AOS | run 2 | best=1.363233e+05 | time=0.738s
+[2026-03-20 20:27:23] DONE: F1 | AE+Init+AOS | run 3 | best=1.642721e+05 | time=0.733s
+[2026-03-20 20:27:23] Block finished: F1 | AE+Init+AOS | done=3 | failed=0
+[2026-03-20 20:27:23] Entering block: F1 | AE+Init+AOS+Repair
+[2026-03-20 20:27:23] DONE: F1 | AE+Init+AOS+Repair | run 1 | best=3.206196e+08 | time=0.779s
+[2026-03-20 20:27:24] DONE: F1 | AE+Init+AOS+Repair | run 2 | best=3.204530e+08 | time=0.761s
+[2026-03-20 20:27:25] DONE: F1 | AE+Init+AOS+Repair | run 3 | best=3.069401e+08 | time=0.764s
+[2026-03-20 20:27:25] Block finished: F1 | AE+Init+AOS+Repair | done=3 | failed=0
+[2026-03-20 20:27:25] Entering block: F1 | FAE-AE
+[2026-03-20 20:27:26] DONE: F1 | FAE-AE | run 1 | best=3.894664e+08 | time=0.735s
+[2026-03-20 20:27:26] DONE: F1 | FAE-AE | run 2 | best=4.772525e+08 | time=0.742s
+[2026-03-20 20:27:27] DONE: F1 | FAE-AE | run 3 | best=3.138501e+08 | time=0.718s
+[2026-03-20 20:27:27] Block finished: F1 | FAE-AE | done=3 | failed=0
+[2026-03-20 20:27:27] Entering block: F3 | Base-AE
+[2026-03-20 20:27:28] DONE: F3 | Base-AE | run 1 | best=3.709594e+04 | time=0.622s
+[2026-03-20 20:27:28] DONE: F3 | Base-AE | run 2 | best=2.829059e+04 | time=0.622s
+[2026-03-20 20:27:29] DONE: F3 | Base-AE | run 3 | best=3.398511e+04 | time=0.617s
+[2026-03-20 20:27:29] Block finished: F3 | Base-AE | done=3 | failed=0
+[2026-03-20 20:27:29] Entering block: F3 | AE+Init
+[2026-03-20 20:27:30] DONE: F3 | AE+Init | run 1 | best=2.612529e+04 | time=0.651s
+[2026-03-20 20:27:30] DONE: F3 | AE+Init | run 2 | best=3.624455e+04 | time=0.619s
+[2026-03-20 20:27:31] DONE: F3 | AE+Init | run 3 | best=3.499947e+04 | time=0.621s
+[2026-03-20 20:27:31] Block finished: F3 | AE+Init | done=3 | failed=0
+[2026-03-20 20:27:31] Entering block: F3 | AE+Init+AOS
+[2026-03-20 20:27:32] DONE: F3 | AE+Init+AOS | run 1 | best=4.340053e+04 | time=0.736s
+[2026-03-20 20:27:32] DONE: F3 | AE+Init+AOS | run 2 | best=4.988597e+04 | time=0.746s
+[2026-03-20 20:27:33] DONE: F3 | AE+Init+AOS | run 3 | best=6.557885e+04 | time=0.710s
+[2026-03-20 20:27:33] Block finished: F3 | AE+Init+AOS | done=3 | failed=0
+[2026-03-20 20:27:33] Entering block: F3 | AE+Init+AOS+Repair
+[2026-03-20 20:27:34] DONE: F3 | AE+Init+AOS+Repair | run 1 | best=1.525605e+04 | time=0.770s
+[2026-03-20 20:27:35] DONE: F3 | AE+Init+AOS+Repair | run 2 | best=1.724166e+04 | time=0.777s
+[2026-03-20 20:27:36] DONE: F3 | AE+Init+AOS+Repair | run 3 | best=2.246242e+04 | time=0.783s
+[2026-03-20 20:27:36] Block finished: F3 | AE+Init+AOS+Repair | done=3 | failed=0
+[2026-03-20 20:27:36] Entering block: F3 | FAE-AE
+[2026-03-20 20:27:36] DONE: F3 | FAE-AE | run 1 | best=2.036396e+04 | time=0.740s
+[2026-03-20 20:27:37] DONE: F3 | FAE-AE | run 2 | best=1.812759e+04 | time=0.743s
+[2026-03-20 20:27:38] DONE: F3 | FAE-AE | run 3 | best=1.577862e+04 | time=0.755s
+[2026-03-20 20:27:38] Block finished: F3 | FAE-AE | done=3 | failed=0
+[2026-03-20 20:27:38] Batch finished | done=30 | failed=0 | pending=0 | elapsed=21.47s

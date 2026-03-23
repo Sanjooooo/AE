@@ -1,0 +1,7 @@
+Scene,Statistic,AE,PSO,GWO,HHO,WOA,FAEAE
+Scene 1,Feasibility ratio,0.6333,0.8667,1.0000,0.9333,0.7667,1.0000
+Scene 1,Avg runtime (s),6.8421,6.5787,6.7771,8.3474,6.4810,68.8042
+Scene 2,Feasibility ratio,0.1000,0.6333,1.0000,0.9333,0.4667,1.0000
+Scene 2,Avg runtime (s),6.7961,6.7115,6.9447,8.4515,6.6945,92.7574
+Scene 4,Feasibility ratio,0.0000,0.0333,0.6333,0.3333,0.0667,1.0000
+Scene 4,Avg runtime (s),7.5671,7.2211,7.6006,9.3085,7.1834,102.3577

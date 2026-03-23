@@ -1,0 +1,6 @@
+Method,AverageRank
+AE+Init,2.5
+AE+Init+AOS,3
+AE+Init+AOS+Repair,3
+FAE-AE,3
+Base-AE,3.5
