@@ -4,6 +4,7 @@ function export_uav_scene_views(sceneIds, outDir, varargin)
 % 用途：
 %   1) 只导出每个场景的纯场景图（无路径）
 %   2) 可选叠加一条 path / ctrlPts
+%   3) 用于第二章的图，展示场景即可
 %
 % 基于你仓库现有接口：
 %   - defaultParams()
@@ -38,10 +39,6 @@ function export_uav_scene_views(sceneIds, outDir, varargin)
 % 输出文件：
 %   scene1_3d.png / scene1_top.png / scene1_3d.fig / scene1_top.fig
 %   scene2_...
-%
-% 作者建议：
-%   - 论文“场景示意图”直接用这个脚本的纯地图输出
-%   - 论文“最优航迹图”继续用你仓库已有 plot_uav_best_paths_exact.m
 
     if nargin < 1 || isempty(sceneIds)
         sceneIds = [1 2 3 4];

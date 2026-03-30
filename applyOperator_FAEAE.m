@@ -1,5 +1,6 @@
 function Xnew = applyOperator_FAEAE(i, pop, fit, bestX, refX, opIdx, iter, params)
 %APPLYOPERATOR_FAEAE Quasi-formalized AE-style update for FAE-AE.
+% 复杂版，完整版
 
 [N, D] = size(pop);
 x = pop(i, :);

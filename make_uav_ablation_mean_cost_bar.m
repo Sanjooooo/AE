@@ -47,7 +47,7 @@ function make_uav_ablation_mean_cost_bar(resultDir, outDir)
     fprintf('Output dir : %s\n\n', outDir);
 
     sceneOrder = [1, 2, 4];
-    sceneLabels = {'Scene 1', 'Scene 2', 'Scene 4'};
+    sceneLabels = {'Scene 1', 'Scene 2', 'Scene 3'};
 
     % 与 plot_ablation_paper_figures 完全一致的顺序
     methodNames = { ...

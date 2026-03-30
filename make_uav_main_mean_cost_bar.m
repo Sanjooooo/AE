@@ -54,7 +54,7 @@ function make_uav_main_mean_cost_bar(resultDir, outDir)
     fprintf('Output dir : %s\n\n', outDir);
 
     sceneOrder = [1, 2, 4];
-    sceneLabels = {'Scene 1', 'Scene 2', 'Scene 4'};
+    sceneLabels = {'Scene 1', 'Scene 2', 'Scene 3'};
     algOrder = {'AE', 'PSO', 'GWO', 'HHO', 'WOA', 'FAEAE'};
 
     [sceneCol, algCol, meanCol, stdCol] = localDetectColumns(T);

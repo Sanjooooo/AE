@@ -1,0 +1,373 @@
+function summary = run_uav_comparison_lite_v2_batch(cfg)
+%RUN_UAV_COMPARISON_LITE_V2_BATCH
+% UAV main-comparison batch for the staged lite-v2 FAEAE.
+%
+% Output files:
+% - uav_comparison_runs.csv
+% - uav_comparison_summary_long.csv
+% - uav_comparison_average_rank.csv
+% - uav_comparison_summary_workspace.mat
+% - uav_comparison_results.mat
+% - run_records/*.mat
+%
+% Compatible with downstream scripts that require:
+% - uav_comparison_results.mat
+% - run_records folder
+
+if nargin < 1 || isempty(cfg)
+    cfg = getUAVComparisonConfig('formal');
+end
+
+if ~isfield(cfg, 'sceneIds') || isempty(cfg.sceneIds)
+    cfg.sceneIds = [1, 2, 4];
+end
+if ~isfield(cfg, 'algorithms') || isempty(cfg.algorithms)
+    cfg.algorithms = {'AE', 'PSO', 'GWO', 'HHO', 'WOA', 'FAEAE'};
+end
+if ~isfield(cfg, 'nRuns') || isempty(cfg.nRuns)
+    cfg.nRuns = 30;
+end
+if ~isfield(cfg, 'baseSeed') || isempty(cfg.baseSeed)
+    cfg.baseSeed = 20260328;
+end
+if ~isfield(cfg, 'resultDir') || isempty(cfg.resultDir)
+    cfg.resultDir = fullfile(pwd, ['results_uav_lite_v2_formal_' datestr(now, 'yyyymmdd_HHMMSS')]);
+end
+if ~isfield(cfg, 'useLiteFAEAE')
+    cfg.useLiteFAEAE = true;
+end
+
+if ~exist(cfg.resultDir, 'dir')
+    mkdir(cfg.resultDir);
+end
+
+runDir = fullfile(cfg.resultDir, 'run_records');
+if ~exist(runDir, 'dir')
+    mkdir(runDir);
+end
+
+nScenes = numel(cfg.sceneIds);
+nAlgs   = numel(cfg.algorithms);
+nRuns   = cfg.nRuns;
+
+runRows = [];
+allResults = cell(nScenes, nAlgs);
+
+fprintf('\n============================================================\n');
+fprintf('UAV Lite-V2 Batch Experiment\n');
+fprintf('Result folder : %s\n', cfg.resultDir);
+fprintf('Run folder    : %s\n', runDir);
+fprintf('Scenes        : %s\n', mat2str(cfg.sceneIds));
+fprintf('Algorithms    : %s\n', strjoin(cfg.algorithms, ', '));
+fprintf('Runs          : %d\n', cfg.nRuns);
+fprintf('============================================================\n\n');
+
+for s = 1:nScenes
+    sceneId = cfg.sceneIds(s);
+
+    params = defaultParams();
+    params.sceneId = sceneId;
+
+    if isfield(cfg, 'paramsOverride') && isstruct(cfg.paramsOverride)
+        params = localApplyOverrides(params, cfg.paramsOverride);
+    end
+
+    map = createMap(params);
+    refCtrl = generateReferencePath(map, params);
+    refX = encodeControlPoints(refCtrl);
+    objFun = @(x) fitnessFAEAE(x, map, params);
+
+    for a = 1:nAlgs
+        algName = cfg.algorithms{a};
+        algCfg = getUAVAlgorithmConfig(algName, params, cfg);
+
+        fprintf('--- Scene %d | %s ---\n', sceneId, algName);
+
+        runs = struct([]);
+        okCount = 0;
+
+        for r = 1:nRuns
+            runSeed = cfg.baseSeed + 10000 * sceneId + 100 * a + r;
+            tRun = tic;
+
+            try
+                result = localRunSingle(algName, objFun, params, map, refX, algCfg, runSeed, cfg.useLiteFAEAE);
+                elapsed = toc(tRun);
+
+                % -------- normalize result fields for downstream compatibility --------
+                result = localNormalizeResultStruct(result, sceneId, algName, r, runSeed);
+
+                % -------- save run_records --------
+                save(fullfile(runDir, sprintf('scene%d_%s_run%03d.mat', sceneId, upper(algName), r)), 'result');
+
+                % -------- collect allResults --------
+                if isempty(runs)
+                    runs = result;
+                else
+                    [runs, result] = localAlignStructArrayAndScalar(runs, result);
+                    runs(end+1) = result;
+                end
+                okCount = okCount + 1;
+
+                % -------- collect run-level table --------
+                row = table( ...
+                    sceneId, {algName}, r, runSeed, ...
+                    result.bestFitness, result.runtime, ...
+                    logical(result.finalFeasible), result.finalViolation, ...
+                    elapsed, ...
+                    'VariableNames', {'Scene','Algorithm','Run','Seed','BestFitness','Runtime','Feasible','Violation','WallClock'} );
+
+                if isempty(runRows)
+                    runRows = row;
+                else
+                    runRows = [runRows; row]; %#ok<AGROW>
+                end
+
+                fprintf('  run %2d/%2d | best = %.6f | feas = %d | time = %.3fs\n', ...
+                    r, nRuns, result.bestFitness, logical(result.finalFeasible), result.runtime);
+
+            catch ME
+                warning('Scene %d | %s | run %d failed: %s', sceneId, algName, r, ME.message);
+            end
+        end
+
+        allResults{s, a} = runs;
+        fprintf('  -> Scene %d | %s saved %d/%d runs\n', sceneId, algName, okCount, nRuns);
+    end
+end
+
+if isempty(runRows)
+    error('No UAV results were produced.');
+end
+
+% ------------------------------------------------------------------------
+% save summary tables
+% ------------------------------------------------------------------------
+writetable(runRows, fullfile(cfg.resultDir, 'uav_comparison_runs.csv'));
+
+summaryLong = localBuildSummary(runRows, cfg.sceneIds, cfg.algorithms);
+writetable(summaryLong, fullfile(cfg.resultDir, 'uav_comparison_summary_long.csv'));
+
+avgRank = localAverageRank(summaryLong, cfg.algorithms);
+writetable(avgRank, fullfile(cfg.resultDir, 'uav_comparison_average_rank.csv'));
+
+summary = struct();
+summary.runTable = runRows;
+summary.longTable = summaryLong;
+summary.avgRankTable = avgRank;
+save(fullfile(cfg.resultDir, 'uav_comparison_summary_workspace.mat'), 'summary', 'cfg');
+
+% ------------------------------------------------------------------------
+% save master result mat for downstream plot/export scripts
+% ------------------------------------------------------------------------
+save(fullfile(cfg.resultDir, 'uav_comparison_results.mat'), 'allResults', 'cfg', '-v7.3');
+
+fprintf('\nSaved:\n');
+fprintf('  %s\n', fullfile(cfg.resultDir, 'uav_comparison_runs.csv'));
+fprintf('  %s\n', fullfile(cfg.resultDir, 'uav_comparison_summary_long.csv'));
+fprintf('  %s\n', fullfile(cfg.resultDir, 'uav_comparison_average_rank.csv'));
+fprintf('  %s\n', fullfile(cfg.resultDir, 'uav_comparison_summary_workspace.mat'));
+fprintf('  %s\n', fullfile(cfg.resultDir, 'uav_comparison_results.mat'));
+fprintf('  %s\n', runDir);
+end
+
+% ========================================================================
+function result = localRunSingle(algName, objFun, params, map, refX, algCfg, runSeed, useLiteFAEAE)
+switch upper(algName)
+    case 'AE'
+        result = optimizer_AE_uav(objFun, params, map, refX, algCfg, runSeed);
+    case 'PSO'
+        result = optimizer_PSO_uav(objFun, params, map, refX, algCfg, runSeed);
+    case 'GWO'
+        result = optimizer_GWO_uav(objFun, params, map, refX, algCfg, runSeed);
+    case 'HHO'
+        result = optimizer_HHO_uav(objFun, params, map, refX, algCfg, runSeed);
+    case 'WOA'
+        result = optimizer_WOA_uav(objFun, params, map, refX, algCfg, runSeed);
+    case 'FAEAE'
+        if useLiteFAEAE
+            result = optimizer_FAEAE_lite_v2_uav(objFun, params, map, refX, algCfg, runSeed);
+        else
+            result = optimizer_FAEAE_uav(objFun, params, map, refX, algCfg, runSeed);
+        end
+    otherwise
+        error('Unknown UAV algorithm: %s', algName);
+end
+end
+
+% ========================================================================
+function result = localNormalizeResultStruct(result, sceneId, algName, runId, runSeed)
+% unify common field names for downstream scripts
+
+if ~isfield(result, 'bestFitness') && isfield(result, 'bestFit')
+    result.bestFitness = result.bestFit;
+end
+if ~isfield(result, 'bestFit') && isfield(result, 'bestFitness')
+    result.bestFit = result.bestFitness;
+end
+
+if ~isfield(result, 'runtime') && isfield(result, 'runTime')
+    result.runtime = result.runTime;
+end
+if ~isfield(result, 'runTime') && isfield(result, 'runtime')
+    result.runTime = result.runtime;
+end
+
+if ~isfield(result, 'convergence') && isfield(result, 'bestHist')
+    result.convergence = result.bestHist;
+end
+if ~isfield(result, 'bestHist') && isfield(result, 'convergence')
+    result.bestHist = result.convergence;
+end
+
+if ~isfield(result, 'finalFeasible')
+    if isfield(result, 'bestDetail') && isstruct(result.bestDetail) && isfield(result.bestDetail, 'isFeasible')
+        result.finalFeasible = result.bestDetail.isFeasible;
+    elseif isfield(result, 'isFeasible')
+        result.finalFeasible = result.isFeasible;
+    else
+        result.finalFeasible = false;
+    end
+end
+
+if ~isfield(result, 'finalViolation')
+    if isfield(result, 'bestDetail') && isstruct(result.bestDetail) && isfield(result.bestDetail, 'V')
+        result.finalViolation = result.bestDetail.V;
+    elseif isfield(result, 'violation')
+        result.finalViolation = result.violation;
+    else
+        result.finalViolation = NaN;
+    end
+end
+
+if ~isfield(result, 'sceneId')
+    result.sceneId = sceneId;
+end
+if ~isfield(result, 'runId')
+    result.runId = runId;
+end
+if ~isfield(result, 'seed')
+    result.seed = runSeed;
+end
+if ~isfield(result, 'algName')
+    result.algName = algName;
+end
+end
+
+% ========================================================================
+function [A, b] = localAlignStructArrayAndScalar(A, b)
+% align field sets between a struct array and a scalar struct
+
+aFields = fieldnames(A);
+bFields = fieldnames(b);
+allFields = unique([aFields; bFields]);
+
+% add missing fields to A
+for i = 1:numel(allFields)
+    fn = allFields{i};
+    if ~isfield(A, fn)
+        defaultVal = localDefaultValueLike(b.(fn));
+        for k = 1:numel(A)
+            A(k).(fn) = defaultVal;
+        end
+    end
+end
+
+% add missing fields to b
+for i = 1:numel(allFields)
+    fn = allFields{i};
+    if ~isfield(b, fn)
+        b.(fn) = localDefaultValueLike(A(1).(fn));
+    end
+end
+
+A = orderfields(A, b);
+b = orderfields(b, A(1));
+end
+
+% ========================================================================
+function v = localDefaultValueLike(example)
+if isnumeric(example)
+    if isempty(example)
+        v = [];
+    else
+        v = nan(size(example));
+    end
+elseif islogical(example)
+    v = false;
+elseif ischar(example)
+    v = '';
+elseif isstring(example)
+    v = "";
+elseif iscell(example)
+    v = cell(size(example));
+elseif isstruct(example)
+    v = struct();
+else
+    v = [];
+end
+end
+
+% ========================================================================
+function T = localBuildSummary(runRows, sceneIds, algorithms)
+rows = table();
+for s = 1:numel(sceneIds)
+    sid = sceneIds(s);
+    means = nan(1, numel(algorithms));
+    stds  = nan(1, numel(algorithms));
+
+    for a = 1:numel(algorithms)
+        alg = algorithms{a};
+        mask = runRows.Scene == sid & strcmpi(runRows.Algorithm, alg);
+        vals = runRows.BestFitness(mask);
+        means(a) = mean(vals, 'omitnan');
+        stds(a) = std(vals, 'omitnan');
+    end
+
+    [~, order] = sort(means, 'ascend');
+    rankVals = nan(1, numel(algorithms));
+    rankVals(order) = 1:numel(algorithms);
+
+    for a = 1:numel(algorithms)
+        alg = algorithms{a};
+        mask = runRows.Scene == sid & strcmpi(runRows.Algorithm, alg);
+
+        row = table( ...
+            sid, {alg}, ...
+            means(a), stds(a), rankVals(a), ...
+            mean(double(runRows.Feasible(mask)), 'omitnan'), ...
+            mean(runRows.Runtime(mask), 'omitnan'), ...
+            'VariableNames', {'Scene','Algorithm','Mean','Std','Rank','Feasibility','AvgRuntime'} );
+
+        if isempty(rows)
+            rows = row;
+        else
+            rows = [rows; row]; %#ok<AGROW>
+        end
+    end
+end
+T = rows;
+end
+
+% ========================================================================
+function Tavg = localAverageRank(Tlong, algorithms)
+avgRanks = nan(numel(algorithms), 1);
+for a = 1:numel(algorithms)
+    mask = strcmpi(Tlong.Algorithm, algorithms{a});
+    avgRanks(a) = mean(Tlong.Rank(mask), 'omitnan');
+end
+Tavg = table(algorithms(:), avgRanks, 'VariableNames', {'Algorithm','AverageRank'});
+Tavg = sortrows(Tavg, 'AverageRank', 'ascend');
+end
+
+% ========================================================================
+function params = localApplyOverrides(params, overrides)
+f = fieldnames(overrides);
+for k = 1:numel(f)
+    if isstruct(overrides.(f{k})) && isfield(params, f{k}) && isstruct(params.(f{k}))
+        params.(f{k}) = localApplyOverrides(params.(f{k}), overrides.(f{k}));
+    else
+        params.(f{k}) = overrides.(f{k});
+    end
+end
+end
