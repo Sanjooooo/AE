@@ -55,7 +55,7 @@ function export_uav_scene_views(sceneIds, outDir, varargin)
     ip.addParameter('ctrlPts', [], @(x) isempty(x) || (isnumeric(x) && size(x,2)==3));
     ip.addParameter('saveFig', true, @(x) islogical(x) || isnumeric(x));
     ip.addParameter('savePng', true, @(x) islogical(x) || isnumeric(x));
-    ip.addParameter('visible', 'off', @(x) ischar(x) || isstring(x));
+    ip.addParameter('visible', 'on', @(x) ischar(x) || isstring(x));
     ip.addParameter('scene4LowAlt', true, @(x) islogical(x) || isnumeric(x));
     ip.parse(varargin{:});
 
