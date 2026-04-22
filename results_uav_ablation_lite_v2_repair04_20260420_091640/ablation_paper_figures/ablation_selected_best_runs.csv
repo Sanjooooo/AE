@@ -1,0 +1,16 @@
+SceneId,Method,BestFit,Feasible,SourceFile
+1,Base-AE,348.731308771598,1,F:\MATLAB_Project\FAEAE_matlab\results_uav_ablation_lite_v2_repair04_20260420_091640\run_records\scene1_BASE_AE_run004.mat
+1,AE+Init,302.792144024327,1,F:\MATLAB_Project\FAEAE_matlab\results_uav_ablation_lite_v2_repair04_20260420_091640\run_records\scene1_AE_INIT_run028.mat
+1,AE+Init+AOS,299.35364609971,1,F:\MATLAB_Project\FAEAE_matlab\results_uav_ablation_lite_v2_repair04_20260420_091640\run_records\scene1_AE_INIT_AOS_run010.mat
+1,AE+Init+AOS+Repair,298.417725979443,1,F:\MATLAB_Project\FAEAE_matlab\results_uav_ablation_lite_v2_repair04_20260420_091640\run_records\scene1_AE_INIT_AOS_REPAIR_run024.mat
+1,FAEAE,300.50272393336,1,F:\MATLAB_Project\FAEAE_matlab\results_uav_ablation_lite_v2_repair04_20260420_091640\run_records\scene1_FAEAE_run030.mat
+2,Base-AE,530.618388864427,1,F:\MATLAB_Project\FAEAE_matlab\results_uav_ablation_lite_v2_repair04_20260420_091640\run_records\scene2_BASE_AE_run023.mat
+2,AE+Init,312.352495643657,1,F:\MATLAB_Project\FAEAE_matlab\results_uav_ablation_lite_v2_repair04_20260420_091640\run_records\scene2_AE_INIT_run022.mat
+2,AE+Init+AOS,310.161366042478,1,F:\MATLAB_Project\FAEAE_matlab\results_uav_ablation_lite_v2_repair04_20260420_091640\run_records\scene2_AE_INIT_AOS_run016.mat
+2,AE+Init+AOS+Repair,310.396063265043,1,F:\MATLAB_Project\FAEAE_matlab\results_uav_ablation_lite_v2_repair04_20260420_091640\run_records\scene2_AE_INIT_AOS_REPAIR_run019.mat
+2,FAEAE,310.659611647294,1,F:\MATLAB_Project\FAEAE_matlab\results_uav_ablation_lite_v2_repair04_20260420_091640\run_records\scene2_FAEAE_run022.mat
+3,Base-AE,1355.55432079764,0,F:\MATLAB_Project\FAEAE_matlab\results_uav_ablation_lite_v2_repair04_20260420_091640\run_records\scene4_BASE_AE_run013.mat
+3,AE+Init,21291.9265910845,1,F:\MATLAB_Project\FAEAE_matlab\results_uav_ablation_lite_v2_repair04_20260420_091640\run_records\scene4_AE_INIT_run007.mat
+3,AE+Init+AOS,327.773665789125,1,F:\MATLAB_Project\FAEAE_matlab\results_uav_ablation_lite_v2_repair04_20260420_091640\run_records\scene4_AE_INIT_AOS_run016.mat
+3,AE+Init+AOS+Repair,316.937475293813,1,F:\MATLAB_Project\FAEAE_matlab\results_uav_ablation_lite_v2_repair04_20260420_091640\run_records\scene4_AE_INIT_AOS_REPAIR_run026.mat
+3,FAEAE,325.904297611772,1,F:\MATLAB_Project\FAEAE_matlab\results_uav_ablation_lite_v2_repair04_20260420_091640\run_records\scene4_FAEAE_run008.mat

@@ -1,42 +1,28 @@
-function plot_ablation_paper_figures_v2(resultRoot)
-%PLOT_ABLATION_PAPER_FIGURES_V2
-% Minimal-adaptation version of your old plot_ablation_paper_figures.m
-% for the current lite-v2 ablation result layout.
-%
-% Current expected input layout:
-%   resultRoot/
-%       run_records/
-%           scene1_BASE_AE_run001.mat
-%           scene1_AE_INIT_run001.mat
-%           scene1_AE_INIT_AOS_run001.mat
-%           scene1_AE_INIT_AOS_REPAIR_run001.mat
-%           scene1_FAEAE_run001.mat
-%           ...
-%       uav_comparison_summary_long.csv
-%       uav_comparison_results.mat
+function plot_ablation_paper_figures_v2_paper(resultRoot)
+%PLOT_ABLATION_PAPER_FIGURES_V2_PAPER
+% Paper-numbered version for lite-v2 ablation results.
+% This version only generates trajectory figures:
+%   - 3D representative trajectories
+%   - Top-view representative trajectories
 %
 % Output folder:
 %   resultRoot/ablation_paper_figures/
-%       scene1_ablation_convergence.png/.fig
-%       scene2_ablation_convergence.png/.fig
-%       scene4_ablation_convergence.png/.fig
 %       scene1_ablation_best_paths_3d.png/.fig
 %       scene1_ablation_best_paths_top.png/.fig
 %       scene2_ablation_best_paths_3d.png/.fig
 %       scene2_ablation_best_paths_top.png/.fig
-%       scene4_ablation_best_paths_3d.png/.fig
-%       scene4_ablation_best_paths_top.png/.fig
-%       scene1_ablation_mean_cost_bar.png/.fig
-%       scene2_ablation_mean_cost_bar.png/.fig
-%       scene4_ablation_mean_cost_bar.png/.fig
-%       scene1_ablation_feasratio_bar.png/.fig
-%       scene2_ablation_feasratio_bar.png/.fig
-%       scene4_ablation_feasratio_bar.png/.fig
+%       scene3_ablation_best_paths_3d.png/.fig
+%       scene3_ablation_best_paths_top.png/.fig
 %       ablation_selected_best_runs.csv
 %
+% Notes:
+%   - code scene 4 is mapped to paper Scene 3
+%   - legend is only shown in the 3D figure, Location='best', FontSize=10
+%   - top-view figure does not show legend
+%
 % Usage:
-%   plot_ablation_paper_figures_v2
-%   plot_ablation_paper_figures_v2(resultRoot)
+%   plot_ablation_paper_figures_v2_paper
+%   plot_ablation_paper_figures_v2_paper(resultRoot)
 
     if nargin < 1 || isempty(resultRoot)
         resultRoot = uigetdir(pwd, 'Select ablation result root folder');
@@ -46,14 +32,11 @@ function plot_ablation_paper_figures_v2(resultRoot)
     end
 
     runDir = fullfile(resultRoot, 'run_records');
-    summaryLongFile = fullfile(resultRoot, 'uav_comparison_summary_long.csv');
+    summaryLongFile = fullfile(resultRoot, 'uav_comparison_summary_long.csv'); %#ok<NASGU>
     outDir = fullfile(resultRoot, 'ablation_paper_figures');
 
     if ~exist(runDir, 'dir')
         error('Missing run_records folder: %s', runDir);
-    end
-    if ~exist(summaryLongFile, 'file')
-        error('Missing summary file: %s', summaryLongFile);
     end
     if ~exist(outDir, 'dir')
         mkdir(outDir);
@@ -66,7 +49,7 @@ function plot_ablation_paper_figures_v2(resultRoot)
         'AE+Init', ...
         'AE+Init+AOS', ...
         'AE+Init+AOS+Repair', ...
-        'FAE-AE'};
+        'FAEAE'};
 
     methodSafeNames = { ...
         'BASE_AE', ...
@@ -77,83 +60,50 @@ function plot_ablation_paper_figures_v2(resultRoot)
 
     methodColors = lines(numel(methodNames));
 
-    Tsummary = readtable(summaryLongFile);
-    if ismember('Algorithm', Tsummary.Properties.VariableNames)
-        Tsummary.Algorithm(strcmpi(string(Tsummary.Algorithm), "FAEAE")) = {'FAE-AE'};
-    end
-
     selectedScene = [];
     selectedMethod = strings(0,1);
     selectedBestFit = [];
     selectedFeasible = [];
     selectedSourceFile = strings(0,1);
 
-    fprintf('\n=== Generate Ablation Paper Figures (v2-adapted) ===\n');
+    fprintf('\n=== Generate Ablation Trajectory Figures (paper numbering) ===\n');
     fprintf('Result root : %s\n', resultRoot);
     fprintf('Run dir     : %s\n', runDir);
     fprintf('Output dir  : %s\n\n', outDir);
 
     for s = 1:numel(sceneIds)
         sceneId = sceneIds(s);
+        paperSceneId = localPaperSceneId(sceneId);
 
         params = defaultParams();
         params.sceneId = sceneId;
         params.figView = [-37.5, 30];
         map = createMap(params);
 
-        methodRuns = cell(numel(methodNames), 1);
         methodBest = cell(numel(methodNames), 1);
 
         for m = 1:numel(methodNames)
             runs = localLoadRunsFromRunRecords(runDir, sceneId, methodSafeNames{m});
-            methodRuns{m} = runs;
 
             if ~isempty(runs)
-                bestRun = localSelectBestRun(runs);
+                % Manual override: code Scene 2 + FAEAE -> fixed run 22
+                if sceneId == 2 && strcmpi(methodSafeNames{m}, 'FAEAE')
+                    bestRun = localSelectRunById(runs, 22);
+                else
+                    bestRun = localSelectBestRun(runs);
+                end
+
                 methodBest{m} = bestRun;
 
-                selectedScene(end+1,1) = sceneId; %#ok<AGROW>
+                selectedScene(end+1,1) = paperSceneId; %#ok<AGROW>
                 selectedMethod(end+1,1) = string(methodNames{m}); %#ok<AGROW>
                 selectedBestFit(end+1,1) = localGetField(bestRun, {'bestFit','bestFitness','bestCost'}, NaN); %#ok<AGROW>
                 selectedFeasible(end+1,1) = double(localBestRunFeasible(bestRun)); %#ok<AGROW>
-                selectedSourceFile(end+1,1) = string(localGetField(bestRun, {'_sourceFile'}, "")); %#ok<AGROW>
+                selectedSourceFile(end+1,1) = string(localGetField(bestRun, {'_sourceFile','sourceFile'}, "")); %#ok<AGROW>
             end
         end
 
-        figConv = figure('Color', 'w', 'Position', [100 100 1100 800]);
-        hold on; grid on; box on;
-
-        legendHandles = [];
-        legendNames = {};
-
-        for m = 1:numel(methodNames)
-            runs = methodRuns{m};
-            if isempty(runs)
-                continue;
-            end
-
-            meanCurve = localComputeMeanConvergence(runs);
-            if isempty(meanCurve)
-                continue;
-            end
-
-            h = plot(meanCurve, 'LineWidth', 2.2, 'Color', methodColors(m,:));
-            legendHandles(end+1) = h; %#ok<AGROW>
-            legendNames{end+1} = methodNames{m}; %#ok<AGROW>
-        end
-
-        xlabel('Iteration');
-        ylabel('Mean best cost');
-        title(sprintf('Scene %d Ablation Convergence', sceneId), 'Interpreter', 'none');
-
-        if ~isempty(legendHandles)
-            legend(legendHandles, legendNames, 'Location', 'northeast');
-        end
-
-        savefig(figConv, fullfile(outDir, sprintf('scene%d_ablation_convergence.fig', sceneId)));
-        saveas(figConv, fullfile(outDir, sprintf('scene%d_ablation_convergence.png', sceneId)));
-        close(figConv);
-
+        % 3D trajectory figure (with legend)
         fig3d = figure('Color', 'w', 'Position', [120 120 1250 900]);
         plotSceneOnly(map, params);
         hold on;
@@ -182,15 +132,16 @@ function plot_ablation_paper_figures_v2(resultRoot)
             legendNames{end+1} = methodNames{m}; %#ok<AGROW>
         end
 
-        title(sprintf('Scene %d Ablation Best Trajectories (3D)', sceneId), 'Interpreter', 'none');
+        title(sprintf('Scene %d Ablation Best Trajectories (3D)', paperSceneId), 'Interpreter', 'none');
         if ~isempty(legendHandles)
-            legend(legendHandles, legendNames, 'Location', 'northeastoutside');
+            legend(legendHandles, legendNames, 'Location', 'best', 'FontSize', 10);
         end
 
-        savefig(fig3d, fullfile(outDir, sprintf('scene%d_ablation_best_paths_3d.fig', sceneId)));
-        saveas(fig3d, fullfile(outDir, sprintf('scene%d_ablation_best_paths_3d.png', sceneId)));
+        savefig(fig3d, fullfile(outDir, sprintf('scene%d_ablation_best_paths_3d.fig', paperSceneId)));
+        saveas(fig3d, fullfile(outDir, sprintf('scene%d_ablation_best_paths_3d.png', paperSceneId)));
         close(fig3d);
 
+        % Top-view trajectory figure (without legend)
         figTop = figure('Color', 'w', 'Position', [140 140 1250 900]);
         paramsTop = params;
         paramsTop.figView = [0, 90];
@@ -199,8 +150,12 @@ function plot_ablation_paper_figures_v2(resultRoot)
         axis equal;
         hold on;
 
-        legendHandles = [];
-        legendNames = {};
+        % 强制取消俯视图图例
+        legend off;
+        lgd = findobj(figTop, 'Type', 'Legend');
+        if ~isempty(lgd)
+            delete(lgd);
+        end
 
         for m = 1:numel(methodNames)
             bestRun = methodBest{m};
@@ -213,71 +168,32 @@ function plot_ablation_paper_figures_v2(resultRoot)
                 continue;
             end
 
-            h = plot3(bestPath(:,1), bestPath(:,2), bestPath(:,3), '-', 'LineWidth', 2.4, 'Color', methodColors(m,:));
+            plot3(bestPath(:,1), bestPath(:,2), bestPath(:,3), '-', 'LineWidth', 2.4, 'Color', methodColors(m,:));
 
             if ~isempty(bestCtrl)
                 plot3(bestCtrl(:,1), bestCtrl(:,2), bestCtrl(:,3), 'o', 'Color', methodColors(m,:), 'MarkerSize', 4, 'LineWidth', 1.0);
             end
-
-            legendHandles(end+1) = h; %#ok<AGROW>
-            legendNames{end+1} = methodNames{m}; %#ok<AGROW>
         end
 
-        title(sprintf('Scene %d Ablation Best Trajectories (Top View)', sceneId), 'Interpreter', 'none');
-        if ~isempty(legendHandles)
-            legend(legendHandles, legendNames, 'Location', 'northeastoutside');
-        end
+        title(sprintf('Scene %d Ablation Best Trajectories (Top View)', paperSceneId), 'Interpreter', 'none');
 
-        savefig(figTop, fullfile(outDir, sprintf('scene%d_ablation_best_paths_top.fig', sceneId)));
-        saveas(figTop, fullfile(outDir, sprintf('scene%d_ablation_best_paths_top.png', sceneId)));
+        % 再次确保俯视图不保留图例
+        legend off;
+        lgd = findobj(figTop, 'Type', 'Legend');
+        if ~isempty(lgd)
+            delete(lgd);
+        end
+        
+        savefig(figTop, fullfile(outDir, sprintf('scene%d_ablation_best_paths_top.fig', paperSceneId)));
+        saveas(figTop, fullfile(outDir, sprintf('scene%d_ablation_best_paths_top.png', paperSceneId)));
         close(figTop);
-
-        figBar = figure('Color', 'w', 'Position', [150 150 1000 700]);
-        [means, stds, feas] = localGetSceneStats(Tsummary, sceneId, methodNames); %#ok<ASGLU>
-        b = bar(means, 'FaceColor', 'flat');
-        for m = 1:min(numel(methodNames), numel(means))
-            b.CData(m,:) = methodColors(m,:);
-        end
-        hold on;
-        if any(isfinite(stds))
-            errorbar(1:numel(means), means, stds, 'k.', 'LineWidth', 1.2);
-        end
-
-        xticks(1:numel(methodNames));
-        xticklabels(methodNames);
-        xtickangle(20);
-        ylabel('Mean cost');
-        title(sprintf('Scene %d Ablation Mean Cost', sceneId), 'Interpreter', 'none');
-        grid on; box on;
-
-        savefig(figBar, fullfile(outDir, sprintf('scene%d_ablation_mean_cost_bar.fig', sceneId)));
-        saveas(figBar, fullfile(outDir, sprintf('scene%d_ablation_mean_cost_bar.png', sceneId)));
-        close(figBar);
-
-        figFeas = figure('Color', 'w', 'Position', [160 160 1000 700]);
-        b = bar(feas, 'FaceColor', 'flat');
-        for m = 1:min(numel(methodNames), numel(feas))
-            b.CData(m,:) = methodColors(m,:);
-        end
-
-        xticks(1:numel(methodNames));
-        xticklabels(methodNames);
-        xtickangle(20);
-        ylabel('Feasibility ratio');
-        ylim([0 1.05]);
-        title(sprintf('Scene %d Ablation Feasibility Ratio', sceneId), 'Interpreter', 'none');
-        grid on; box on;
-
-        savefig(figFeas, fullfile(outDir, sprintf('scene%d_ablation_feasratio_bar.fig', sceneId)));
-        saveas(figFeas, fullfile(outDir, sprintf('scene%d_ablation_feasratio_bar.png', sceneId)));
-        close(figFeas);
     end
 
     Tsel = table(selectedScene, selectedMethod, selectedBestFit, selectedFeasible, selectedSourceFile, ...
         'VariableNames', {'SceneId','Method','BestFit','Feasible','SourceFile'});
     writetable(Tsel, fullfile(outDir, 'ablation_selected_best_runs.csv'));
 
-    fprintf('\nDone. Figures saved to:\n%s\n', outDir);
+    fprintf('Done. Trajectory figures saved to:%s', outDir);
 end
 
 function runs = localLoadRunsFromRunRecords(runDir, sceneId, safeName)
@@ -576,6 +492,15 @@ function tf = localMatchScene(sceneSeries, sceneId)
     end
 end
 
+
+function paperSceneId = localPaperSceneId(sceneId)
+    if sceneId == 4
+        paperSceneId = 3;
+    else
+        paperSceneId = sceneId;
+    end
+end
+
 function tf = localMatchMethod(methodSeries, methodName)
     s = upper(string(methodSeries));
     q = upper(string(methodName));
@@ -605,4 +530,12 @@ function x = localToScalar(v)
     else
         x = NaN;
     end
+end
+
+function runStruct = localSelectRunById(runs, targetRunId)
+    idx = find(arrayfun(@(x) isfield(x, 'runId') && isequal(x.runId, targetRunId), runs), 1, 'first');
+    if isempty(idx)
+        error('Cannot find runId = %d in the provided runs.', targetRunId);
+    end
+    runStruct = runs(idx);
 end

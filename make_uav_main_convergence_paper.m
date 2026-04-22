@@ -1,26 +1,21 @@
 function make_uav_main_convergence_paper(resultDir, outDir)
 %MAKE_UAV_MAIN_CONVERGENCE_PAPER
 % 只基于已有 run_records 结果，生成 UAV 主实验 3 张收敛曲线图：
-%   - Scene 1
-%   - Scene 2
-%   - Scene 4
+%   - 数据场景 1 -> 论文显示 Scene 1
+%   - 数据场景 2 -> 论文显示 Scene 2
+%   - 数据场景 4 -> 论文显示 Scene 3
 %
 % 不会重新跑实验。
 %
-% 颜色映射与 plot_uav_representative_corridor_paths_all 保持一致：
-%   algColors = lines(6)
-%   顺序固定为：
-%   AE / PSO / GWO / HHO / WOA / FAEAE
-%
-% 用法：
-%   make_uav_main_convergence_paper
-%   make_uav_main_convergence_paper('results_uav_6alg_formal_safe')
-%   make_uav_main_convergence_paper('results_uav_6alg_formal_safe', 'paper_final_figures')
+% 出图策略：
+%   Scene 1 : 线性主图 + inset
+%   Scene 2 : semilogy 主图 + 线性 inset
+%   Scene 3 : semilogy 主图 + 线性 inset
 %
 % 输出：
 %   fig4_4_scene1_convergence_main.png/.fig
 %   fig4_5_scene2_convergence_main.png/.fig
-%   fig4_6_scene4_convergence_main.png/.fig
+%   fig4_6_scene3_convergence_main.png/.fig
 
     if nargin < 1 || isempty(resultDir)
         resultDir = 'results_uav_6alg_formal_safe';
@@ -41,6 +36,7 @@ function make_uav_main_convergence_paper(resultDir, outDir)
         error('未找到 run_records 目录：%s', runDir);
     end
 
+    % 保留真实数据场景编号
     sceneIds = [1, 2, 4];
     algOrder = {'AE', 'PSO', 'GWO', 'HHO', 'WOA', 'FAEAE'};
 
@@ -50,17 +46,17 @@ function make_uav_main_convergence_paper(resultDir, outDir)
     fprintf('Output folder: %s\n\n', outDir);
 
     for s = 1:numel(sceneIds)
-        sceneId = sceneIds(s);
+        sceneId = sceneIds(s);                          % 真实数据场景：1/2/4
+        displaySceneId = localDisplaySceneId(sceneId); % 论文显示：1/2/3
 
-        fig = figure('Color', 'w', 'Position', [80 80 1100 780]);
-        hold on;
-        grid on;
-        box on;
+        fprintf('Scene %d (data scene %d):\n', displaySceneId, sceneId);
 
-        legendHandles = [];
-        legendNames = {};
-
-        fprintf('Scene %d:\n', sceneId);
+        % ================================================================
+        % 先收集当前场景下所有算法的平均收敛曲线
+        % ================================================================
+        meanCurves = cell(1, numel(algOrder));
+        commonLen = 0;
+        validMask = false(1, numel(algOrder));
 
         for a = 1:numel(algOrder)
             algName = algOrder{a};
@@ -92,36 +88,154 @@ function make_uav_main_convergence_paper(resultDir, outDir)
             end
 
             meanCurve = localMeanCurve(curves);
-
-            style = localAlgStyle(algName, algOrder);
-            h = plot(1:numel(meanCurve), meanCurve, ...
-                'LineWidth', style.LineWidth, ...
-                'Color', style.Color);
-
-            legendHandles(end+1) = h; %#ok<AGROW>
-            legendNames{end+1} = algName; %#ok<AGROW>
+            meanCurves{a} = meanCurve(:);
+            validMask(a) = true;
+            commonLen = max(commonLen, numel(meanCurve));
 
             fprintf('  %-6s | valid runs used = %d | curve length = %d\n', ...
                 algName, numel(curves), numel(meanCurve));
         end
 
-        xlabel('Iteration', 'FontName', 'Times New Roman', 'FontSize', 13);
-        ylabel('Best-so-far cost', 'FontName', 'Times New Roman', 'FontSize', 13);
-        title(sprintf('Scene %d Convergence Curves', sceneId), ...
-            'FontName', 'Times New Roman', 'FontSize', 14, 'FontWeight', 'bold');
-
-        set(gca, ...
-            'FontName', 'Times New Roman', ...
-            'FontSize', 12, ...
-            'LineWidth', 1.0);
-
-        if ~isempty(legendHandles)
-            legend(legendHandles, legendNames, ...
-                'Location', 'northeast', ...
-                'Interpreter', 'none');
+        if commonLen == 0
+            warning('UAV:NoCurve', ...
+                'Scene %d (data scene %d) 未提取到任何有效曲线，跳过。', ...
+                displaySceneId, sceneId);
+            continue;
         end
 
-        [pngName, figName] = localSceneConvFilenames(sceneId);
+        % 统一补齐长度，避免曲线提前结束
+        for a = 1:numel(algOrder)
+            if validMask(a)
+                meanCurves{a} = localPadCurveToLength(meanCurves{a}, commonLen);
+            end
+        end
+
+        % ================================================================
+        % 开始绘图
+        % ================================================================
+        fig = figure('Color', 'w', 'Position', [80 80 1100 700]);
+        axMain = axes(fig);
+        hold(axMain, 'on');
+        grid(axMain, 'on');
+        box(axMain, 'on');
+
+        legendHandles = [];
+        legendNames = {};
+
+        % 主图画法
+        useSemiLogMain = (displaySceneId == 2 || displaySceneId == 3);
+
+        for a = 1:numel(algOrder)
+            if ~validMask(a)
+                continue;
+            end
+
+            algName = algOrder{a};
+            style = localAlgStyle(algName, algOrder);
+            y = meanCurves{a};
+
+            if useSemiLogMain
+                yMain = y;
+                yMain(yMain <= 0) = eps;
+                h = semilogy(axMain, 1:commonLen, yMain, ...
+                    'LineWidth', style.LineWidth, ...
+                    'Color', style.Color);
+            else
+                h = plot(axMain, 1:commonLen, y, ...
+                    'LineWidth', style.LineWidth, ...
+                    'Color', style.Color);
+            end
+
+            legendHandles(end+1) = h; %#ok<AGROW>
+            legendNames{end+1} = algName; %#ok<AGROW>
+        end
+
+        xlabel(axMain, 'Iteration', 'FontName', 'Times New Roman', 'FontSize', 13);
+        ylabel(axMain, 'Best-so-far cost', 'FontName', 'Times New Roman', 'FontSize', 13);
+        title(axMain, sprintf('Scene %d Convergence', displaySceneId), ...
+            'FontName', 'Times New Roman', 'FontSize', 13, 'FontWeight', 'bold');
+
+        set(axMain, ...
+            'FontName', 'Times New Roman', ...
+            'FontSize', 11, ...
+            'LineWidth', 1.0, ...
+            'GridAlpha', 0.18, ...
+            'MinorGridAlpha', 0.10);
+
+        xlim(axMain, [1, commonLen]);
+
+        if displaySceneId == 1
+            % Scene 1 用线性主图，纵轴自动稍微收紧
+            yy = [];
+            for a = 1:numel(algOrder)
+                if validMask(a)
+                    yy = [yy; meanCurves{a}(:)]; %#ok<AGROW>
+                end
+            end
+            ymin = min(yy);
+            ymax = max(yy);
+            pad = 0.05 * (ymax - ymin);
+            ylim(axMain, [ymin - pad, ymax + pad]);
+        else
+            % Scene 2/3 主图用 semilogy，通常不用强行设 ylim
+        end
+
+            if ~isempty(legendHandles)
+            if displaySceneId == 1
+                legend(axMain, legendHandles, legendNames, ...
+                    'Location', 'northeast', ...
+                    'Interpreter', 'none', ...
+                    'Box', 'on', ...
+                    'FontSize', 10);
+            else
+                legend(axMain, legendHandles, legendNames, ...
+                    'Location', 'northeast', ...
+                    'Interpreter', 'none', ...
+                    'Box', 'on', ...
+                    'FontSize', 10);
+            end
+        end
+
+        % ================================================================
+        % inset：统一用线性局部放大
+        % ================================================================
+        [xInset, yInset, insetPos] = localSceneInsetParams(displaySceneId);
+
+        axInset = axes('Parent', fig, 'Position', insetPos);
+        hold(axInset, 'on');
+        grid(axInset, 'on');
+        box(axInset, 'on');
+
+        for a = 1:numel(algOrder)
+            if ~validMask(a)
+                continue;
+            end
+
+            algName = algOrder{a};
+            style = localAlgStyle(algName, algOrder);
+            y = meanCurves{a};
+
+            plot(axInset, 1:commonLen, y, ...
+                'LineWidth', style.LineWidth * 0.95, ...
+                'Color', style.Color);
+        end
+
+        xlim(axInset, xInset);
+        ylim(axInset, yInset);
+
+        set(axInset, ...
+            'FontName', 'Times New Roman', ...
+            'FontSize', 9, ...
+            'LineWidth', 0.9, ...
+            'GridAlpha', 0.16, ...
+            'MinorGridAlpha', 0.08);
+
+        % inset 不显示坐标标签，只保留刻度
+        axInset.TickDir = 'in';
+
+        set(axMain, 'LooseInset', max(get(axMain, 'TightInset'), 0.02));
+
+        [pngName, figName] = localSceneConvFilenames(displaySceneId);
         savefig(fig, fullfile(outDir, figName));
         exportgraphics(fig, fullfile(outDir, pngName), 'Resolution', 300);
         close(fig);
@@ -262,10 +376,20 @@ function meanCurve = localMeanCurve(curves)
 end
 
 %% ========================================================================
-function style = localAlgStyle(algName, algOrder)
-% 与 representative 轨迹图保持一致：
-% algColors = lines(numel(algorithms))
+function c = localPadCurveToLength(c, targetLen)
+    c = c(:);
+    L = numel(c);
 
+    if L >= targetLen
+        c = c(1:targetLen);
+        return;
+    end
+
+    c(L+1:targetLen) = c(end);
+end
+
+%% ========================================================================
+function style = localAlgStyle(algName, algOrder)
     algColors = lines(numel(algOrder));
     idx = find(strcmpi(algOrder, algName), 1);
 
@@ -274,24 +398,64 @@ function style = localAlgStyle(algName, algOrder)
     end
 
     style.Color = algColors(idx,:);
-    style.LineWidth = 2.0;
+    style.LineWidth = 1.6;
 
     if strcmpi(algName, 'FAEAE')
-        style.LineWidth = 2.4;
+        style.LineWidth = 2.2;
     end
 end
 
 %% ========================================================================
-function [pngName, figName] = localSceneConvFilenames(sceneId)
+function displaySceneId = localDisplaySceneId(sceneId)
     switch sceneId
+        case 4
+            displaySceneId = 3;   % 数据里的 Scene 4，在论文里显示为 Scene 3
+        otherwise
+            displaySceneId = sceneId;
+    end
+end
+
+function [xInset, yInset, insetPos] = localSceneInsetParams(displaySceneId)
+% inset 坐标范围与位置
+% insetPos = [left bottom width height]，相对于 figure 归一化坐标
+
+    switch displaySceneId
+        case 1
+            % Scene 1：线性主图 + 尾部放大
+            xInset = [220, 300];
+            yInset = [280, 350];
+            insetPos = [0.40, 0.45, 0.40, 0.40];
+
+        case 2
+            % Scene 2：semilogy 主图 + 尾部线性放大
+            xInset = [230, 300];
+            yInset = [300, 900];
+            insetPos = [0.40, 0.42, 0.40, 0.40];
+
+        case 3
+            % Scene 3：semilogy 主图 + 尾部线性放大
+            xInset = [220, 300];
+            yInset = [270, 1800];
+            insetPos = [0.40, 0.42, 0.40, 0.40];
+
+        otherwise
+            xInset = [1, 10];
+            yInset = [0, 1];
+            insetPos = [0.50, 0.55, 0.27, 0.27];
+    end
+end
+
+%% ========================================================================
+function [pngName, figName] = localSceneConvFilenames(displaySceneId)
+    switch displaySceneId
         case 1
             stem = 'fig4_4_scene1_convergence_main';
         case 2
             stem = 'fig4_5_scene2_convergence_main';
-        case 4
-            stem = 'fig4_6_scene4_convergence_main';
+        case 3
+            stem = 'fig4_6_scene3_convergence_main';
         otherwise
-            stem = sprintf('scene%d_convergence_main', sceneId);
+            stem = sprintf('scene%d_convergence_main', displaySceneId);
     end
 
     pngName = [stem, '.png'];

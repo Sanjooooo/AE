@@ -315,13 +315,13 @@ end
 % ========================================================================
 function params = localDefaultLiteV2Params(params)
 params.lite = struct();
-params.lite.aosFreezeFrac        = 0.50;
+params.lite.aosFreezeFrac        = 0.40;
 params.lite.aosFreezeUseBestReward = true;
 params.lite.aosFrozenOp          = 3;
 
 params.lite.repairStartFrac      = 0.35;
 params.lite.repairFullStartFrac  = 0.70;
-params.lite.repairEliteFrac      = 0.25;
+params.lite.repairEliteFrac      = 0.40;
 params.lite.repairMaxViolation   = 20;
 params.lite.repairIters          = 1;
 params.lite.repairPeriodMid      = 3;
