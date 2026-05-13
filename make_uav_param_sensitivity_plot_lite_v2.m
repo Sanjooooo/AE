@@ -1,9 +1,18 @@
-function fig = make_uav_param_sensitivity_plot_lite_v2(resultDir)
+function figs = make_uav_param_sensitivity_plot_lite_v2(resultDir)
 %MAKE_UAV_PARAM_SENSITIVITY_PLOT_LITE_V2
-% Draw a 2x2 sensitivity figure from param_sensitivity_summary_long.csv.
+% Draw four separate sensitivity figures from param_sensitivity_summary_long.csv.
 %
 % Usage:
 %   make_uav_param_sensitivity_plot_lite_v2('results_uav_param_sensitivity_lite_v2_xxx');
+%
+% Output:
+%   figs: handles of the four generated figures.
+%
+% Generated files:
+%   fig_param_sensitivity_a_ucb_c.fig/.pdf/.png
+%   fig_param_sensitivity_b_aos_freeze_frac.fig/.pdf/.png
+%   fig_param_sensitivity_c_repair_elite_frac.fig/.pdf/.png
+%   fig_param_sensitivity_d_stagnation_window.fig/.pdf/.png
 
     if nargin < 1 || isempty(resultDir)
         error('Please provide resultDir.');
@@ -17,17 +26,24 @@ function fig = make_uav_param_sensitivity_plot_lite_v2(resultDir)
     T = readtable(csvFile);
 
     paramOrder = {'aos_c', 'aosFreezeFrac', 'repairEliteFrac', 'regenWindow'};
-    titleText = { ...
+
+    xLabelText = { ...
         'UCB coefficient c', ...
         'AOS freeze fraction', ...
         'Repair elite fraction', ...
         'Stagnation window W'};
 
-    fig = figure('Color', 'w', 'Position', [100, 100, 1000, 760]);
-    tiledlayout(2, 2, 'Padding', 'compact', 'TileSpacing', 'compact');
+    fileSuffix = { ...
+        'a_ucb_c', ...
+        'b_aos_freeze_frac', ...
+        'c_repair_elite_frac', ...
+        'd_stagnation_window'};
+
+    figs = gobjects(numel(paramOrder), 1);
 
     for i = 1:numel(paramOrder)
-        nexttile;
+
+        figs(i) = figure('Color', 'w', 'Position', [100, 100, 560, 420]);
         hold on;
         box on;
 
@@ -43,18 +59,34 @@ function fig = make_uav_param_sensitivity_plot_lite_v2(resultDir)
                 'DisplayName', sprintf('Scene %d', paperScene));
         end
 
-        xlabel(titleText{i}, 'Interpreter', 'none');
+        xlabel(xLabelText{i}, 'Interpreter', 'none');
         ylabel('Mean cost');
-        title(titleText{i}, 'FontWeight', 'normal');
-        legend('Location', 'best');
+
+        % No title is used here, following journal figure-format guidelines.
+        lgd = legend('Location', 'best');
+        set(lgd, 'Box', 'on');   % 如果你希望图例带方框，可保留；不需要可删掉
         grid on;
+
+        set(gca, 'FontName', 'Times New Roman', 'FontSize', 11);
+        set(gca, 'LineWidth', 0.8);
+
         hold off;
+
+        baseName = sprintf('fig_param_sensitivity_%s', fileSuffix{i});
+        figFile = fullfile(resultDir, [baseName, '.fig']);
+        pdfFile = fullfile(resultDir, [baseName, '.pdf']);
+        pngFile = fullfile(resultDir, [baseName, '.png']);
+
+        % 保存 MATLAB 原始图文件
+        savefig(figs(i), figFile);
+
+        % 导出 PDF 和 PNG
+        exportgraphics(figs(i), pdfFile, 'ContentType', 'vector');
+        exportgraphics(figs(i), pngFile, 'Resolution', 300);
+
+        fprintf('Saved:\n');
+        fprintf(' %s\n', figFile);
+        fprintf(' %s\n', pdfFile);
+        fprintf(' %s\n', pngFile);
     end
-
-    exportgraphics(fig, fullfile(resultDir, 'fig_param_sensitivity_lite_v2.pdf'), 'ContentType', 'vector');
-    exportgraphics(fig, fullfile(resultDir, 'fig_param_sensitivity_lite_v2.png'), 'Resolution', 300);
-
-    fprintf('Saved:\n');
-    fprintf(' %s\n', fullfile(resultDir, 'fig_param_sensitivity_lite_v2.pdf'));
-    fprintf(' %s\n', fullfile(resultDir, 'fig_param_sensitivity_lite_v2.png'));
 end

@@ -1,15 +1,28 @@
-function make_cec_representative_convergence_paper(resultDir, outDir, targetFuncs)
+function figs = make_cec_representative_convergence_paper(resultDir, outDir, targetFuncs)
 %MAKE_CEC_REPRESENTATIVE_CONVERGENCE_PAPER
-% 生成 4 个代表 CEC 函数的 2x2 收敛图
+% Generate separate convergence figures for representative CEC2017 functions.
 %
-% 推荐代表函数：
+% Recommended representative functions:
 %   F9, F16, F21, F27
 %
-% 用法：
+% Usage:
 %   make_cec_representative_convergence_paper
 %   make_cec_representative_convergence_paper('results_cec2017_formal_high_woa')
 %   make_cec_representative_convergence_paper('results_cec2017_formal_high_woa', 'paper_final_figures')
 %   make_cec_representative_convergence_paper('results_cec2017_formal_high_woa', 'paper_final_figures', [9 16 21 27])
+%
+% Output files:
+%   fig_cec_convergence_F9.pdf/png/fig
+%   fig_cec_convergence_F16.pdf/png/fig
+%   fig_cec_convergence_F21.pdf/png/fig
+%   fig_cec_convergence_F27.pdf/png/fig
+%
+% Notes:
+%   1. No title is placed inside each figure.
+%   2. The function IDs should be described in the LaTeX caption.
+%   3. All figures use the same canvas size and axes position to ensure aligned
+%      layout when arranged as subfigures in LaTeX.
+%   4. Legends are enclosed in boxes.
 
     if nargin < 1 || isempty(resultDir)
         resultDir = 'results_cec2017_formal_high_woa';
@@ -34,14 +47,14 @@ function make_cec_representative_convergence_paper(resultDir, outDir, targetFunc
 
     algOrder = {'AE', 'PSO', 'GWO', 'HHO', 'WOA', 'FAEAE'};
 
-    fprintf('\n=== Make CEC Representative Convergence Figure ===\n');
+    fprintf('\n=== Make CEC Representative Convergence Figures ===\n');
     fprintf('Result folder: %s\n', resultDir);
     fprintf('Output folder: %s\n', outDir);
     fprintf('Target funcs : %s\n\n', mat2str(targetFuncs));
 
     curvesByFunc = [];
 
-    % 1) export workspace
+    % 1) Try export workspace.
     if exist(exportWsFile, 'file')
         fprintf('Trying export workspace: %s\n', exportWsFile);
         try
@@ -55,7 +68,7 @@ function make_cec_representative_convergence_paper(resultDir, outDir, targetFunc
         end
     end
 
-    % 2) batch results
+    % 2) Try batch results.
     if isempty(curvesByFunc) && exist(batchMatFile, 'file')
         fprintf('Trying batch results: %s\n', batchMatFile);
         try
@@ -69,7 +82,7 @@ function make_cec_representative_convergence_paper(resultDir, outDir, targetFunc
         end
     end
 
-    % 3) run_records fallback
+    % 3) Fallback to run_records.
     if isempty(curvesByFunc) && exist(runDir, 'dir')
         fprintf('Trying fallback run_records: %s\n', runDir);
         curvesByFunc = localExtractCurvesByFuncFromRunRecords(runDir, algOrder, targetFuncs);
@@ -82,15 +95,32 @@ function make_cec_representative_convergence_paper(resultDir, outDir, targetFunc
         error('未能提取到代表函数收敛曲线，请检查 workspace 或 run_records 的字段/文件名。');
     end
 
-    fig = figure('Color', 'w', 'Position', [60 60 1200 850]);
-    t = tiledlayout(2, 2, 'TileSpacing', 'compact', 'Padding', 'compact');
+    % ---------------------------------------------------------------------
+    % Fixed figure geometry for consistent LaTeX alignment.
+    % ---------------------------------------------------------------------
+    figW = 15.0;
+    figH = 10.2;
+    axPos = [0.14, 0.15, 0.82, 0.78];
 
-    legendHandles = [];
-    legendNames = {};
+    figs = gobjects(numel(targetFuncs), 1);
 
     for k = 1:numel(targetFuncs)
+
         fid = targetFuncs(k);
-        ax = nexttile;
+
+        fig = figure( ...
+            'Color', 'w', ...
+            'Units', 'centimeters', ...
+            'Position', [3, 3, figW, figH], ...
+            'PaperUnits', 'centimeters', ...
+            'PaperSize', [figW, figH], ...
+            'PaperPosition', [0, 0, figW, figH]);
+
+        figs(k) = fig;
+
+        ax = axes(fig);
+        set(ax, 'Units', 'normalized', 'Position', axPos);
+
         hold(ax, 'on');
         grid(ax, 'on');
         box(ax, 'on');
@@ -98,10 +128,10 @@ function make_cec_representative_convergence_paper(resultDir, outDir, targetFunc
         hasAny = false;
         allY = [];
 
-        % ---------- 先收集这个函数下所有算法的平均曲线 ----------
         meanCurves = cell(1, numel(algOrder));
         commonLen = 0;
 
+        % ---------- Collect mean curves for the current function ----------
         for a = 1:numel(algOrder)
             algName = algOrder{a};
 
@@ -119,14 +149,13 @@ function make_cec_representative_convergence_paper(resultDir, outDir, targetFunc
 
             meanCurve = localMeanCurve(curveCell);
             meanCurves{a} = meanCurve(:);
-
             commonLen = max(commonLen, numel(meanCurve));
 
             fprintf('F%-2d | %-6s | curves used = %d | final length = %d\n', ...
                 fid, algName, numel(curveCell), numel(meanCurve));
         end
 
-        % ---------- 再统一补齐后绘图 ----------
+        % ---------- Plot after padding to the same length ----------
         for a = 1:numel(algOrder)
             algName = algOrder{a};
             meanCurve = meanCurves{a};
@@ -138,29 +167,33 @@ function make_cec_representative_convergence_paper(resultDir, outDir, targetFunc
             meanCurve = localPadCurveToLength(meanCurve, commonLen);
 
             style = localAlgStyle(algName, algOrder);
+
             if all(meanCurve > 0)
-                h = semilogy(ax, 1:numel(meanCurve), meanCurve, ...
+                semilogy(ax, 1:numel(meanCurve), meanCurve, ...
                     'LineWidth', style.LineWidth, ...
-                    'Color', style.Color);
+                    'Color', style.Color, ...
+                    'DisplayName', algName);
             else
-                h = plot(ax, 1:numel(meanCurve), meanCurve, ...
+                plot(ax, 1:numel(meanCurve), meanCurve, ...
                     'LineWidth', style.LineWidth, ...
-                    'Color', style.Color);
+                    'Color', style.Color, ...
+                    'DisplayName', algName);
             end
 
             hasAny = true;
             allY = [allY; meanCurve(:)]; %#ok<AGROW>
-
-            if k == 1
-                legendHandles(end+1) = h; %#ok<AGROW>
-                legendNames{end+1} = algName; %#ok<AGROW>
-            end
         end
 
-        title(ax, sprintf('F%d Convergence', fid), ...
-            'FontName', 'Times New Roman', 'FontSize', 13, 'FontWeight', 'bold');
-        xlabel(ax, 'Iteration', 'FontName', 'Times New Roman', 'FontSize', 12);
-        ylabel(ax, 'Best-so-far value', 'FontName', 'Times New Roman', 'FontSize', 12);
+        xlabel(ax, 'Iteration', ...
+            'FontName', 'Times New Roman', ...
+            'FontSize', 12);
+
+        ylabel(ax, 'Best-so-far value', ...
+            'FontName', 'Times New Roman', ...
+            'FontSize', 12);
+
+        % No title is used here. The function ID is specified in the file
+        % name and in the LaTeX caption, e.g., (a) F9, (b) F16, etc.
 
         set(ax, ...
             'FontName', 'Times New Roman', ...
@@ -169,24 +202,39 @@ function make_cec_representative_convergence_paper(resultDir, outDir, targetFunc
             'GridAlpha', 0.18, ...
             'MinorGridAlpha', 0.10);
 
-         if hasAny
+        if hasAny
             xlim(ax, [1, commonLen]);
-        
+
             yy = allY(isfinite(allY));
+
             if ~isempty(yy)
                 ymin = min(yy);
                 ymax = max(yy);
+
                 if ymax > ymin
-                    if ~all(yy > 0)
+                    if all(yy > 0)
+                        ymin = max(ymin, realmin);
+                        logPad = 0.05 * (log10(ymax) - log10(ymin));
+                        yLow = 10^(log10(ymin) - logPad);
+                        yHigh = 10^(log10(ymax) + logPad);
+                        ylim(ax, [yLow, yHigh]);
+                    else
                         pad = 0.05 * (ymax - ymin);
                         ylim(ax, [ymin - pad, ymax + pad]);
                     end
                 end
             end
-        
+
+            % Optional manual adjustment for specific functions.
+            % For semilogy, do not use zero as the lower bound.
             switch fid
                 case 9
-                    ylim(ax, [0, 20000]);
+                    if all(yy > 0)
+                        yLow = max(min(yy), realmin);
+                        ylim(ax, [yLow, 20000]);
+                    else
+                        ylim(ax, [0, 20000]);
+                    end
                 case 16
                     % ylim(ax, [2400, 6000]);
                 case 21
@@ -195,34 +243,52 @@ function make_cec_representative_convergence_paper(resultDir, outDir, targetFunc
                     % ylim(ax, [3200, 4200]);
             end
         end
-    end
 
-    if ~isempty(legendHandles)
-        lgd = legend(legendHandles, legendNames, ...
-            'Orientation', 'horizontal', ...
+        % Boxed legend.
+        lgd = legend(ax, ...
+            'Location', 'best', ...
             'Interpreter', 'none', ...
-            'Box', 'off');
-        lgd.Layout.Tile = 'south';
+            'Box', 'on');
+
+        lgd.EdgeColor = [0, 0, 0];
+        lgd.LineWidth = 0.8;
+        lgd.Color = [1, 1, 1];
+        lgd.FontName = 'Times New Roman';
+        lgd.FontSize = 8;
+
+        hold(ax, 'off');
+
+        % -----------------------------------------------------------------
+        % Export with fixed PDF page size.
+        % -----------------------------------------------------------------
+        outBase = fullfile(outDir, sprintf('fig_cec_convergence_F%d', fid));
+        outFig = [outBase, '.fig'];
+        outPdf = [outBase, '.pdf'];
+        outPng = [outBase, '.png'];
+
+        savefig(fig, outFig);
+
+        set(fig, 'PaperUnits', 'centimeters');
+        set(fig, 'PaperSize', [figW, figH]);
+        set(fig, 'PaperPosition', [0, 0, figW, figH]);
+
+        print(fig, outPdf, '-dpdf', '-vector');
+        exportgraphics(fig, outPng, 'Resolution', 300);
+
+        fprintf('\nSaved: %s\n', outFig);
+        fprintf('Saved: %s\n', outPdf);
+        fprintf('Saved: %s\n', outPng);
+
+        close(fig);
     end
-
-%     title(t, 'CEC2017 Representative Function Convergence Curves', ...
-%         'FontName', 'Times New Roman', 'FontSize', 14, 'FontWeight', 'bold');
-
-    outFig = fullfile(outDir, 'fig4_15_cec_representative_convergence.fig');
-    outPng = fullfile(outDir, 'fig4_15_cec_representative_convergence.png');
-
-    savefig(fig, outFig);
-    exportgraphics(fig, outPng, 'Resolution', 300);
-    close(fig);
-
-    fprintf('\nSaved: %s\n', outPng);
-    fprintf('Saved: %s\n', outFig);
 end
 
+%% ========================================================================
 function curvesByFunc = localExtractCurvesByFuncFromWorkspace(S, algOrder, targetFuncs)
 
     curvesByFunc = struct('funcId', {}, 'algName', {}, 'curves', {});
     ptr = 0;
+
     for f = 1:numel(targetFuncs)
         for a = 1:numel(algOrder)
             ptr = ptr + 1;
@@ -252,6 +318,7 @@ function curvesByFunc = localExtractCurvesByFuncFromWorkspace(S, algOrder, targe
     end
 end
 
+%% ========================================================================
 function curvesByFunc = localScanAnyByFunc(value, curvesByFunc, algOrder, targetFuncs)
 
     if isstruct(value)
@@ -301,16 +368,18 @@ function curvesByFunc = localScanAnyByFunc(value, curvesByFunc, algOrder, target
         funcIdx = find(ismember(vn, ["funcid","functionid","fid","function","problem","problemid","testfunction"]), 1);
 
         if ~isempty(algIdx) && ~isempty(curveIdx) && ~isempty(funcIdx)
-            algCol  = value.Properties.VariableNames{algIdx};
+            algCol = value.Properties.VariableNames{algIdx};
             curveCol = value.Properties.VariableNames{curveIdx};
-            funcCol  = value.Properties.VariableNames{funcIdx};
+            funcCol = value.Properties.VariableNames{funcIdx};
 
             for r = 1:height(value)
                 algName = localNormalizeAlgName(value.(algCol)(r), algOrder);
                 funcId = localNormalizeFunctionId(value.(funcCol)(r), targetFuncs);
 
                 curve = value.(curveCol)(r);
-                if iscell(curve), curve = curve{1}; end
+                if iscell(curve)
+                    curve = curve{1};
+                end
 
                 if ~isempty(algName) && ~isempty(funcId) && isnumeric(curve) && ~isempty(curve)
                     idx = localFindFuncAlg(curvesByFunc, funcId, algName);
@@ -324,10 +393,12 @@ function curvesByFunc = localScanAnyByFunc(value, curvesByFunc, algOrder, target
     end
 end
 
+%% ========================================================================
 function curvesByFunc = localExtractCurvesByFuncFromRunRecords(runDir, algOrder, targetFuncs)
 
     curvesByFunc = struct('funcId', {}, 'algName', {}, 'curves', {});
     ptr = 0;
+
     for f = 1:numel(targetFuncs)
         for a = 1:numel(algOrder)
             ptr = ptr + 1;
@@ -354,6 +425,7 @@ function curvesByFunc = localExtractCurvesByFuncFromRunRecords(runDir, algOrder,
             S = load(fp);
             rr = localExtractResultStruct(S);
             curve = localExtractConvergenceCurve(rr);
+
             if ~isempty(curve)
                 idx = localFindFuncAlg(curvesByFunc, funcId, algName);
                 if ~isempty(idx)
@@ -371,15 +443,19 @@ function curvesByFunc = localExtractCurvesByFuncFromRunRecords(runDir, algOrder,
             break;
         end
     end
+
     if ~hasAny
         curvesByFunc = [];
     end
 end
 
+%% ========================================================================
 function funcId = localDetectFunctionId(rr, targetFuncs)
+
     funcId = [];
 
     candidateFields = {'funcId','functionId','fid','function','problem','problemId','testFunction','cecFunc','func'};
+
     for i = 1:numel(candidateFields)
         fn = candidateFields{i};
         if isfield(rr, fn)
@@ -391,6 +467,7 @@ function funcId = localDetectFunctionId(rr, targetFuncs)
     end
 
     nestedFields = {'params','config','meta','setting'};
+
     for i = 1:numel(nestedFields)
         nf = nestedFields{i};
         if isfield(rr, nf) && isstruct(rr.(nf))
@@ -408,7 +485,9 @@ function funcId = localDetectFunctionId(rr, targetFuncs)
     end
 end
 
+%% ========================================================================
 function funcId = localNormalizeFunctionId(v, targetFuncs)
+
     funcId = [];
 
     if iscell(v) && numel(v) == 1
@@ -425,6 +504,7 @@ function funcId = localNormalizeFunctionId(v, targetFuncs)
     if isstring(v) || ischar(v)
         s = upper(strtrim(char(string(v))));
         tok = regexp(s, 'F?(\d+)', 'tokens', 'once');
+
         if ~isempty(tok)
             x = str2double(tok{1});
             if any(targetFuncs == x)
@@ -434,9 +514,12 @@ function funcId = localNormalizeFunctionId(v, targetFuncs)
     end
 end
 
+%% ========================================================================
 function algName = localNormalizeAlgNameFromFilename(fname, algOrder)
+
     algName = '';
     up = upper(fname);
+
     for i = 1:numel(algOrder)
         if contains(up, upper(algOrder{i}))
             algName = algOrder{i};
@@ -445,10 +528,13 @@ function algName = localNormalizeAlgNameFromFilename(fname, algOrder)
     end
 end
 
+%% ========================================================================
 function funcId = localNormalizeFunctionIdFromFilename(fname, targetFuncs)
+
     funcId = [];
     up = upper(fname);
     tok = regexp(up, 'F(\d+)', 'tokens', 'once');
+
     if ~isempty(tok)
         x = str2double(tok{1});
         if any(targetFuncs == x)
@@ -457,163 +543,15 @@ function funcId = localNormalizeFunctionIdFromFilename(fname, targetFuncs)
     end
 end
 
+%% ========================================================================
 function idx = localFindFuncAlg(curvesByFunc, funcId, algName)
+
     idx = find([curvesByFunc.funcId] == funcId & strcmpi({curvesByFunc.algName}, algName), 1);
 end
 
 %% ========================================================================
-function curvesByAlg = localExtractCurvesFromWorkspace(S, algOrder)
-% 从 MAT workspace 中尽量自动抽取“算法 -> 多条收敛曲线”
-
-    curvesByAlg = struct('algName', {}, 'curves', {});
-
-    % 先初始化
-    for i = 1:numel(algOrder)
-        curvesByAlg(i).algName = algOrder{i}; %#ok<AGROW>
-        curvesByAlg(i).curves = {};
-    end
-
-    foundAnything = false;
-
-    % 递归扫描所有变量
-    fns = fieldnames(S);
-    for i = 1:numel(fns)
-        value = S.(fns{i});
-        curvesByAlg = localScanAny(value, curvesByAlg, algOrder);
-    end
-
-    for i = 1:numel(curvesByAlg)
-        if ~isempty(curvesByAlg(i).curves)
-            foundAnything = true;
-            break;
-        end
-    end
-
-    if ~foundAnything
-        curvesByAlg = [];
-    end
-end
-
-%% ========================================================================
-function curvesByAlg = localScanAny(value, curvesByAlg, algOrder)
-
-    % struct
-    if isstruct(value)
-        if numel(value) > 1
-            for k = 1:numel(value)
-                curvesByAlg = localScanAny(value(k), curvesByAlg, algOrder);
-            end
-            return;
-        end
-
-        % 当前 struct 本身是否像一条 run/result
-        algName = localDetectAlgorithmName(value, algOrder);
-        curve = localExtractConvergenceCurve(value);
-        if ~isempty(algName) && ~isempty(curve)
-            idx = find(strcmpi({curvesByAlg.algName}, algName), 1);
-            if ~isempty(idx)
-                curvesByAlg(idx).curves{end+1} = curve(:);
-            end
-        end
-
-        % 递归扫子字段
-        fns = fieldnames(value);
-        for i = 1:numel(fns)
-            try
-                curvesByAlg = localScanAny(value.(fns{i}), curvesByAlg, algOrder);
-            catch
-            end
-        end
-        return;
-    end
-
-    % cell
-    if iscell(value)
-        for i = 1:numel(value)
-            try
-                curvesByAlg = localScanAny(value{i}, curvesByAlg, algOrder);
-            catch
-            end
-        end
-        return;
-    end
-
-    % table
-    if istable(value)
-        % 如果表里本身有 algorithm + curve/history 字段，也尝试提取
-        vn = lower(string(value.Properties.VariableNames));
-        algIdx = find(ismember(vn, ["algorithm","alg","algname","method","methodname"]), 1);
-        curveIdx = find(ismember(vn, ["curve","convergence","history","bestfithistory","bestfitnesshistory","bestcosthistory"]), 1);
-
-        if ~isempty(algIdx) && ~isempty(curveIdx)
-            algCol = value.Properties.VariableNames{algIdx};
-            curveCol = value.Properties.VariableNames{curveIdx};
-
-            for r = 1:height(value)
-                algName = localNormalizeAlgName(value.(algCol)(r), algOrder);
-                curve = value.(curveCol)(r);
-                if iscell(curve), curve = curve{1}; end
-                if ~isempty(algName) && isnumeric(curve) && ~isempty(curve)
-                    idx = find(strcmpi({curvesByAlg.algName}, algName), 1);
-                    if ~isempty(idx)
-                        curvesByAlg(idx).curves{end+1} = curve(:);
-                    end
-                end
-            end
-        end
-        return;
-    end
-end
-
-%% ========================================================================
-function curvesByAlg = localExtractCurvesFromRunRecords(runDir, algOrder)
-
-    curvesByAlg = struct('algName', {}, 'curves', {});
-    for i = 1:numel(algOrder)
-        curvesByAlg(i).algName = algOrder{i}; %#ok<AGROW>
-        curvesByAlg(i).curves = {};
-    end
-
-    for a = 1:numel(algOrder)
-        algName = algOrder{a};
-        pattern1 = fullfile(runDir, sprintf('*_%s_*run*.mat', upper(algName)));
-        files = dir(pattern1);
-
-        if isempty(files)
-            allFiles = dir(fullfile(runDir, '*.mat'));
-            names = upper(string({allFiles.name}));
-            mask = contains(names, upper(string(algName)));
-            files = allFiles(mask);
-        end
-
-        for k = 1:numel(files)
-            fp = fullfile(files(k).folder, files(k).name);
-            try
-                S = load(fp);
-                rr = localExtractResultStruct(S);
-                curve = localExtractConvergenceCurve(rr);
-                if ~isempty(curve)
-                    curvesByAlg(a).curves{end+1} = curve(:);
-                end
-            catch
-            end
-        end
-    end
-
-    hasAny = false;
-    for i = 1:numel(curvesByAlg)
-        if ~isempty(curvesByAlg(i).curves)
-            hasAny = true;
-            break;
-        end
-    end
-    if ~hasAny
-        curvesByAlg = [];
-    end
-end
-
-%% ========================================================================
 function rr = localExtractResultStruct(S)
+
     rr = [];
 
     if isfield(S, 'result') && isstruct(S.result)
@@ -622,6 +560,7 @@ function rr = localExtractResultStruct(S)
     end
 
     fns = fieldnames(S);
+
     if numel(fns) == 1 && isstruct(S.(fns{1}))
         rr = S.(fns{1});
         return;
@@ -634,9 +573,11 @@ end
 
 %% ========================================================================
 function algName = localDetectAlgorithmName(rr, algOrder)
+
     algName = '';
 
     candidateFields = {'algorithm','alg','algName','algorithmName','method','methodName','optimizer','name'};
+
     for i = 1:numel(candidateFields)
         fn = candidateFields{i};
         if isfield(rr, fn)
@@ -648,6 +589,7 @@ function algName = localDetectAlgorithmName(rr, algOrder)
     end
 
     nestedFields = {'params','config','meta','setting'};
+
     for i = 1:numel(nestedFields)
         nf = nestedFields{i};
         if isfield(rr, nf) && isstruct(rr.(nf))
@@ -667,6 +609,7 @@ end
 
 %% ========================================================================
 function algName = localNormalizeAlgName(v, algOrder)
+
     algName = '';
 
     if iscell(v) && numel(v) == 1
@@ -675,6 +618,7 @@ function algName = localNormalizeAlgName(v, algOrder)
 
     if isstring(v) || ischar(v)
         s = upper(strtrim(char(string(v))));
+
         for i = 1:numel(algOrder)
             if strcmpi(s, algOrder{i})
                 algName = algOrder{i};
@@ -686,6 +630,7 @@ end
 
 %% ========================================================================
 function curve = localExtractConvergenceCurve(rr)
+
     curve = [];
 
     candidateFields = { ...
@@ -701,11 +646,14 @@ function curve = localExtractConvergenceCurve(rr)
 
     for i = 1:numel(candidateFields)
         fn = candidateFields{i};
+
         if isfield(rr, fn)
             v = rr.(fn);
+
             if isnumeric(v) && ~isempty(v)
                 curve = localForceVector(v);
                 curve = curve(isfinite(curve));
+
                 if ~isempty(curve)
                     return;
                 end
@@ -714,17 +662,23 @@ function curve = localExtractConvergenceCurve(rr)
     end
 
     nestedFields = {'history', 'stats', 'resultHistory', 'summary'};
+
     for i = 1:numel(nestedFields)
         nf = nestedFields{i};
+
         if isfield(rr, nf) && isstruct(rr.(nf))
             sub = rr.(nf);
+
             for j = 1:numel(candidateFields)
                 fn = candidateFields{j};
+
                 if isfield(sub, fn)
                     v = sub.(fn);
+
                     if isnumeric(v) && ~isempty(v)
                         curve = localForceVector(v);
                         curve = curve(isfinite(curve));
+
                         if ~isempty(curve)
                             return;
                         end
@@ -737,6 +691,7 @@ end
 
 %% ========================================================================
 function v = localForceVector(x)
+
     if isempty(x) || ~isnumeric(x)
         v = [];
         return;
@@ -745,16 +700,17 @@ function v = localForceVector(x)
     if isvector(x)
         v = x(:);
     else
-        if size(x,1) >= size(x,2)
-            v = x(:,1);
+        if size(x, 1) >= size(x, 2)
+            v = x(:, 1);
         else
-            v = x(1,:).';
+            v = x(1, :).';
         end
     end
 end
 
 %% ========================================================================
 function meanCurve = localMeanCurve(curves)
+
     n = numel(curves);
     maxLen = max(cellfun(@numel, curves));
 
@@ -763,16 +719,19 @@ function meanCurve = localMeanCurve(curves)
     for i = 1:n
         c = curves{i}(:);
         L = numel(c);
-        M(i,1:L) = c(:);
+        M(i, 1:L) = c(:);
+
         if L < maxLen
-            M(i,L+1:end) = c(end);
+            M(i, L+1:end) = c(end);
         end
     end
 
     meanCurve = mean(M, 1, 'omitnan');
 end
 
+%% ========================================================================
 function c = localPadCurveToLength(c, targetLen)
+
     c = c(:);
     L = numel(c);
 
@@ -786,14 +745,17 @@ end
 
 %% ========================================================================
 function style = localAlgStyle(algName, algOrder)
+
     algColors = lines(numel(algOrder));
     idx = find(strcmpi(algOrder, algName), 1);
+
     if isempty(idx)
         idx = 1;
     end
 
-    style.Color = algColors(idx,:);
+    style.Color = algColors(idx, :);
     style.LineWidth = 1.5;
+
     if strcmpi(algName, 'FAEAE')
         style.LineWidth = 2.2;
     end
